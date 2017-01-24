@@ -1,12 +1,8 @@
-
-
 ## Metodologia
-----
 
-1. MySQL como Sistema Gerenciador de Banco de Dados
+- MySQL como Sistema Gerenciador de Banco de Dados
 
-
-2. Após analise intuitiva de cada arquivo .CSV (valores separados por vírgulas) disponibilizado no *Repositório de Dados do TSE* contendo os dados de Doações para Candidados e Comites, a seguinte *tabela* é proposta;
+- Após analise intuitiva de cada arquivo .CSV (valores separados por vírgulas) disponibilizado no *Repositório de Dados do TSE* contendo os dados de Doações para Candidados e Comites, a seguinte *tabela* é proposta;
 
 ```sql
 CREATE TABLE `doacoes2` (
@@ -29,7 +25,7 @@ CREATE TABLE `doacoes2` (
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 ```
 
-3. Como cada arquivo .CSV do TSE tem uma estrutura (layout) diferente, é necessária uma adaptação no SQL de importação.
+- Como cada arquivo .CSV do TSE tem uma estrutura (layout) diferente, é necessária uma adaptação no SQL de importação.
 
 Como exemplo, para importar a prestação de contas dos candidatos de 2016:
 
@@ -55,7 +51,6 @@ SET
   data=left(@data , 10),
   valor=cast(replace(@valor, ',', '.') AS decimal( 9, 2 ) )
 ```
-
 e para os comites
 
 ```sql
@@ -85,7 +80,7 @@ load data local infile './fontes_tse/2016/receitas_partidos_prestacao_contas_fin
 
 Com a tabela *doacoes* contendo os dados de todos os CVSs, muitas consultas já podem ser realizadas, mas vamos abstrair as redundancias pra otimizar as possíveis consultas.
 
-4. Extrair *Candidatos*
+Extrair *Candidatos*
 ```sql
 CREATE TABLE candidatos
   select partido, uf, nome, cargo, numero, cpf_candidato, cpf_vice
@@ -100,7 +95,7 @@ ALTER TABLE `tse`.`candidatos`
   ADD PRIMARY KEY (`id`);
 ```
 
-5. Extrair *Doadores*
+Extrair *Doadores*
 ```sql
 create table doadores
   select doador, uf, cpf
@@ -114,7 +109,7 @@ ALTER TABLE `tse`.`doadores`
   ADD PRIMARY KEY (`id`);
 ```
 
-6. Extrair *Comites*
+Extrair *Comites*
 ```sql
 create table comites
   SELECT nome, partido, uf
@@ -125,7 +120,7 @@ ALTER TABLE `tse`.`comites`
   ADD PRIMARY KEY (`id`);
 ```
 
-7. Preparar tabela geral *doacoes* para apontar para as novas tabelas de doadores, candidatos e comites.
+Preparar tabela geral *doacoes* para apontar para as novas tabelas de doadores, candidatos e comites.
 ```sql
 CREATE INDEX index_doador ON doadores ( doador, uf, cpf );
 CREATE INDEX index_doador ON doacoes ( doador, uf, cpf );
@@ -138,13 +133,11 @@ ALTER TABLE `tse`.`doacoes`
 CREATE INDEX index_candidato ON candidatos ( nome, cpf_candidato, numero, partido, ano, cargo );
 CREATE INDEX index_candidato ON doacoes ( nome, cpf_candidato, numero, partido, ano, cargo );
 
-
 # atribui doadores
 update doacoes d, doadores dd
   set d.doador_id = dd.id
     where dd.doador = d.doador and d.uf=dd.uf and d.cpf=dd.cpf;
 # Query OK, 3696309 rows affected (44 min 46.83 sec)
-
 
 # atribui candidatos
 update doacoes d, candidatos c
@@ -174,7 +167,7 @@ ADD CONSTRAINT `doacoes_ibfk_3`
   REFERENCES `tse`.`doadores` (`id`)
 ```
 
-8. Remove informações da tabela *doacoes* que foram abstraidas para respectivas tabelas.
+Remove informações da tabela *doacoes* que foram abstraidas para respectivas tabelas.
 ```sql
 ALTER TABLE `tse`.`doacoes`
   DROP COLUMN `cpf_candidato`,
@@ -191,7 +184,7 @@ ALTER TABLE `tse`.`doacoes`
   DROP INDEX `index_doador` ;
 ```
 
-9. Cria nova coluna em Candidatos, Comites e Doadores com soma geral de valores gastos ou doados.
+Cria nova coluna em Candidatos, Comites e Doadores com soma geral de valores gastos ou doados.
 ```sql
 ALTER TABLE `tse`.`comites`
 ADD COLUMN `valor_total` DOUBLE(12,2) NULL AFTER `uf`;
@@ -209,8 +202,6 @@ update doadores dd,
   set dd.valor_total = d.soma
     where dd.doador_id = d.id
 
-# set valor_total
-
 ALTER TABLE `tse`.`candidatos`
 ADD COLUMN `valor_total` DOUBLE(12,2) NULL AFTER `cpf_vice`;
 
@@ -220,5 +211,6 @@ update candidatos c,
     where d.candidato_id = c.id
 ```
 
-10. Por fim temos o modelo
+Por fim temos a seguinte estrutura
+
 ![modelo](modelo.png)
