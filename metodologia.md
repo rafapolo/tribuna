@@ -2,7 +2,7 @@
 
 - MySQL como Sistema Gerenciador de Banco de Dados
 
-- Após analise intuitiva de cada arquivo .CSV (valores separados por vírgulas) disponibilizado no *Repositório de Dados do TSE* contendo os dados de Doações para Candidados e Comites, a seguinte *tabela* é proposta;
+- Após analise intuitiva de cada arquivo .CSV (valores separados por vírgulas) disponibilizado no [[www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais|*Repositório de Dados Eleitorais do TSE*]] contendo os dados de Doações para Candidados e Comites, a seguinte *tabela* é proposta;
 
 ```sql
 CREATE TABLE `doacoes2` (
