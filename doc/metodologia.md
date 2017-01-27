@@ -1,5 +1,5 @@
 ## Metodologia
----
+
 Com o MySQL como Sistema Gerenciador de Banco de Dados,
 ```sql
 CREATE DATABASE tse;
