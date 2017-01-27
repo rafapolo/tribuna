@@ -8,7 +8,7 @@ CREATE DATABASE tse;
 Após analise intuitiva de cada arquivo .CSV (valores separados por vírgulas) disponibilizado no [Repositório de Dados Eleitorais do TSE](www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais) contendo os dados de Doações para Candidados e Comites, a seguinte *tabela* é proposta;
 
 ```sql
-CREATE TABLE `doacoes2` (
+CREATE TABLE `doacoes` (
   `uf` varchar(2) NOT NULL,
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `partido` varchar(8) DEFAULT NULL,
