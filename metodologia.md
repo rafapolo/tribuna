@@ -1,8 +1,11 @@
 ## Metodologia
+---
+Com o MySQL como Sistema Gerenciador de Banco de Dados,
+```sql
+CREATE DATABASE tse;
+```
 
-- MySQL como Sistema Gerenciador de Banco de Dados
-
-- Após analise intuitiva de cada arquivo .CSV (valores separados por vírgulas) disponibilizado no [[www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais|Repositório de Dados Eleitorais do TSE]] contendo os dados de Doações para Candidados e Comites, a seguinte *tabela* é proposta;
+Após analise intuitiva de cada arquivo .CSV (valores separados por vírgulas) disponibilizado no [Repositório de Dados Eleitorais do TSE](www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais) contendo os dados de Doações para Candidados e Comites, a seguinte *tabela* é proposta;
 
 ```sql
 CREATE TABLE `doacoes2` (
@@ -25,9 +28,7 @@ CREATE TABLE `doacoes2` (
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 ```
 
-- Como cada arquivo .CSV do TSE tem uma estrutura (layout) diferente, é necessária uma adaptação no SQL de importação.
-
-Como exemplo, para importar a prestação de contas dos candidatos de 2016:
+Como cada arquivo .CSV do TSE tem uma estrutura/layout diferente, é necessária uma adaptação no SQL de importação para cada arquivo. Como exemplo, para importar a prestação de contas dos candidatos de 2016:
 
 ```sql
 use tse;
@@ -51,7 +52,7 @@ SET
   data=left(@data , 10),
   valor=cast(replace(@valor, ',', '.') AS decimal( 9, 2 ) )
 ```
-e para os comites
+para importar os  dados dos *comites* do .CSV de 2016
 
 ```sql
 use tse;
@@ -80,7 +81,7 @@ load data local infile './fontes_tse/2016/receitas_partidos_prestacao_contas_fin
 
 Com a tabela *doacoes* contendo os dados de todos os CVSs, muitas consultas já podem ser realizadas, mas vamos abstrair as redundancias pra otimizar as possíveis consultas.
 
-Extrair *Candidatos*
+- Extrair *Candidatos*
 ```sql
 CREATE TABLE candidatos
   select partido, uf, nome, cargo, numero, cpf_candidato, cpf_vice
@@ -95,7 +96,7 @@ ALTER TABLE `tse`.`candidatos`
   ADD PRIMARY KEY (`id`);
 ```
 
-Extrair *Doadores*
+- Extrair *Doadores*
 ```sql
 create table doadores
   select doador, uf, cpf
@@ -109,7 +110,7 @@ ALTER TABLE `tse`.`doadores`
   ADD PRIMARY KEY (`id`);
 ```
 
-Extrair *Comites*
+- Extrair *Comites*
 ```sql
 create table comites
   SELECT nome, partido, uf
@@ -120,7 +121,7 @@ ALTER TABLE `tse`.`comites`
   ADD PRIMARY KEY (`id`);
 ```
 
-Preparar tabela geral *doacoes* para apontar para as novas tabelas de doadores, candidatos e comites.
+Otimizar tabela geral *doacoes* para apontar para as novas tabelas de *doadores, candidatos e comites* extraídas.
 ```sql
 CREATE INDEX index_doador ON doadores ( doador, uf, cpf );
 CREATE INDEX index_doador ON doacoes ( doador, uf, cpf );
