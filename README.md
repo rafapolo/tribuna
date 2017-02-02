@@ -4,17 +4,27 @@
 
 
 ----
-## O que é?
-Esse projeto [integra, estrutura e otimiza](doc/metodologia.md) os dados brutos da **Prestação de Contas do Tribunal Superior Eleitoral** disponível no [Repositório de Dados Eleitorais](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais/) num Banco de Dados Relacional preparado para inquéritos, além de propor ferramentas que facilitem sua relevante visualização.
+### O que é?
+Esse projeto [integra, estrutura e otimiza](doc/metodologia.md) os dados brutos da **Prestação de Contas do Tribunal Superior Eleitoral** disponível no [Repositório de Dados Eleitorais](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais/) num Banco de Dados Relacional preparado para inquéritos, além de propor ferramentas abertas que facilitem sua relevante investigação.
 
 ----
-## Por quê?
+### Por quê?
 
 Em 2004 foi necessário integrar os caóticos dados providos pelo TSE na pesquisa e apuração de **Jornalismo Investigativo** que resultou na matéria [As quatro irmãs](http://apublica.org/2014/06/as-quatro-irmas/);
 > Negócios familiares, proximidade com governos, financiamento de campanhas e diversificação de atividades – da telefonia ao setor armamentício – compõem a história das gigantes Odebrecht, OAS, Camargo Corrêa e Andrade Gutierrez.
 
-Porém, muitos *"furos"* e **indícios de corrupção e atos ilícitos** ainda podem ser evidenciados cruzando os dados dos *Doadores e Candidatos aos cargos públicos* com outras fontes.
+Porém, muitos *"furos"* e **indícios de corrupção e atos ilícitos** ainda podem ser evidenciados cruzando esses dados entre *Doadores, Candidatos e Partidos* dos últimos 15 anos, revelando, a princípio, os financiamentos e relações do Poder Público. Fatos ainda inexplorados e ocultos na *Política Brasileira* agora se tornam um pouco mais acessíveis e apuráveis.
 
-O TSE poderia fazer muito mais pela *Transparência Pública* do que apenas disponibilizar dados brutos, difíceis de serem analisados sem especialistas informáticos. Se um *Tribunal* é o lugar onde se administra Justiça, o TSE peca. Voltemos a *Tribuna*, local elevado para espetáculos e debates.
+Se um *Tribunal* é o lugar onde se administra Justiça, o TSE peca. Voltemos a *Tribuna*, local elevado para espetáculos e debates.
 
-Fatos ainda inexplorados e ocultos na *Política Brasileira* agora se tornam um pouco mais acessíveis e apuráveis.
+---
+
+## to do
+- [x] otimizar foreign keys nas tabelas
+- [x] ajustar manualmente dados com ano incorreto
+- [ ] indexar ano e uf
+- [ ] ajustar data (de varchar pra date)
+  - [ ] em alguns dados < 2008 data foi importada como recurso; trocar
+- [ ] documentar quantidade de campos nulos, há muitos doadores ocultos.
+- [ ] WebApp básico com filtros
+- [ ] exportar dump em .dot pra visualizar como Grafo no [Gephi](http://gephi.org)
