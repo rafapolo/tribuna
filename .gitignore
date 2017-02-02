@@ -1,4 +1,4 @@
 tmp/
 fontes_tse/
 *.csv
-tabelas/
+*.sql
