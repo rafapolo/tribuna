@@ -24,7 +24,6 @@ CREATE TABLE `doacoes` (
   `data` varchar(20) DEFAULT NULL,
   `motivo` varchar(400) DEFAULT NULL,
   `valor` double(12,2) DEFAULT NULL,
-  `empresa` tinyint(1) DEFAULT NULL,
   `tipo` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -232,7 +231,7 @@ update candidatos c,
 - Otimiza tabelas após tamanhas mudanças estruturais
 
 ```sql
-  OPTIMIZE TABLE doadores, candidados, comites, doacoes;
+  OPTIMIZE TABLE doadores, candidatos, comites, doacoes;
 ```
 
 Por fim temos a seguinte estrutura
