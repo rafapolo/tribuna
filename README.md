@@ -18,13 +18,17 @@ Porém, muitos *"furos"* e **indícios de corrupção e atos ilícitos** ainda p
 Se um *Tribunal* é o lugar onde se administra Justiça, o TSE peca. Voltemos a *Tribuna*, local elevado para espetáculos e debates.
 
 ---
+### Download
+
+[last database dump](http://extrapolo.com/projeto/tse/tse2016.sql.tar.bz2) | 195.4MB | MD5 e32f00d24c1796dd183cfaa0ebb69848
+
+---
 
 ## to do
 - [x] otimizar foreign keys nas tabelas
 - [x] ajustar manualmente dados com ano incorreto
-- [ ] indexar ano e uf
-- [ ] ajustar data (de varchar pra date)
+- [x] ajustar data (de varchar pra date)
   - [ ] em alguns dados < 2008 data foi importada como recurso; trocar
-- [ ] documentar quantidade de campos nulos, há muitos doadores ocultos.
 - [ ] WebApp básico com filtros
+- [ ] documentar quantidade de campos nulos, há muitos doadores ocultos.
 - [ ] exportar dump em .dot pra visualizar como Grafo no [Gephi](http://gephi.org)
