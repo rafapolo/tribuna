@@ -20,7 +20,7 @@ Se um *Tribunal* é o lugar onde se administra Justiça, o TSE peca. Voltemos a 
 ---
 ### Download
 
-[last database dump](http://extrapolo.com/projeto/tse/tse2016.sql.tar.bz2) | 195.4MB | MD5 e32f00d24c1796dd183cfaa0ebb69848
+[last database dump](http://extrapolo.com/projeto/tse/tse2016.sql.tar.bz2)
 
 ---
 
