@@ -24,7 +24,7 @@ CREATE TABLE `doacoes` (
   `data` varchar(20) DEFAULT NULL,
   `motivo` varchar(400) DEFAULT NULL,
   `valor` double(12,2) DEFAULT NULL,
-  `tipo` varchar(20) DEFAULT NULL,
+  `tipo` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 ```
@@ -201,7 +201,7 @@ ALTER TABLE `tse`.`doacoes`
   DROP INDEX `index_doador` ;
 ```
 
-Cria e define nova coluna em Candidatos, Comites e Doadores com soma geral de valores gastos.
+Cria e define nova coluna em Candidatos, Comites e Doadores com soma geral de valores gastos e quantidade de doações.
 ```sql
 ALTER TABLE `tse`.`comites`
 ADD COLUMN `valor_total` DOUBLE(12,2) NULL AFTER `uf`;
@@ -225,6 +225,12 @@ ADD COLUMN `valor_total` DOUBLE(12,2) NULL AFTER `cpf_vice`;
 update candidatos c,
   (select candidato_id, sum(valor) as soma from doacoes group by candidato_id) as d
   set c.valor_total = d.soma
+    where d.candidato_id = c.id;
+
+
+update candidatos c,
+  (select candidato_id, count(*) as qtd from doacoes group by candidato_id) as d
+  set c.doacoes_count = d.qtd
     where d.candidato_id = c.id;
 ```
 
