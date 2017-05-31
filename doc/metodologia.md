@@ -227,11 +227,15 @@ update candidatos c,
   set c.valor_total = d.soma
     where d.candidato_id = c.id;
 
-
 update candidatos c,
   (select candidato_id, count(*) as qtd from doacoes group by candidato_id) as d
   set c.doacoes_count = d.qtd
     where d.candidato_id = c.id;
+
+update doadores d,
+  (select doador_id, count(*) as qtd from doacoes group by doador_id) as c
+  set d.doacoes_count = c.qtd
+    where c.doador_id = d.id;    
 ```
 
 - Corrige algumas datas automaticamente
