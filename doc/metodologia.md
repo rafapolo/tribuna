@@ -20,9 +20,9 @@ CREATE TABLE `doacoes` (
   `cpf_candidato` varchar(20) DEFAULT NULL,  
   `doador` varchar(255) DEFAULT NULL,
   `cpf` varchar(20) DEFAULT NULL,  
-  `recurso` varchar(20) DEFAULT NULL,
+  `recurso` varchar(255) DEFAULT NULL,
   `data` varchar(20) DEFAULT NULL,
-  `motivo` varchar(400) DEFAULT NULL,
+  `motivo` varchar(255) DEFAULT NULL,
   `valor` double(12,2) DEFAULT NULL,
   `tipo` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -30,6 +30,13 @@ CREATE TABLE `doacoes` (
 ```
 
 Como cada arquivo .CSV do TSE tem uma estrutura/layout diferente, é necessária uma adaptação no SQL de importação para cada arquivo. Como exemplo, para importar a prestação de contas dos candidatos de 2016:
+
+- Remove campos nulos, as aspas excessivas e inválidas do .CSV, :
+```
+sed -e "s/\"//g" -i receitas_candidatos_2014_brasil.txt
+sed -e "s/#NULO#//g" -i receitas_candidatos_2014_brasil.txt
+sed -e "s/#NULO//g" -i receitas_candidatos_2014_brasil.txt
+```
 
 ```sql
 use tse;
@@ -78,15 +85,6 @@ load data local infile './fontes_tse/2016/receitas_partidos_prestacao_contas_fin
   motivo = @descrec,
   data=left(@data , 10),
   valor=cast(replace(@valor, ',', '.') AS decimal( 9, 2 ) )
-```
-
-- Limpa dados dado nulos.
-
-```sql
-update doacoes set doador=null where doador="#NULO";
-update doacoes set motivo=null where motivo="#NULO";
-update doacoes set cpf_vice=null where cpf_vice="#NULO";
-update doacoes set cpf=null where cpf="#NULO";
 ```
 
 Com a tabela *doacoes* contendo os dados de todos os CVSs, muitas consultas já podem ser realizadas, mas vamos abstrair as redundancias pra otimizar as possíveis consultas.
