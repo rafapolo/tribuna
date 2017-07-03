@@ -1,5 +1,5 @@
 use tse;
-load data local infile '/home/lontra/Projetos/tribuna/fontes_tse/prestacao_final_2014/receitas_partidos_2014_brasil.txt'
+load data local infile 'fontes_tse/2014/receitas_partidos_2014_brasil.txt'
   into table doacoes
     fields terminated by ';'
     lines terminated by '\n'
