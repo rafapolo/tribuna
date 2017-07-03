@@ -31,11 +31,11 @@ do
   mkdir $ano
   file=${i##*/}
   # download, se não existe
-  #wget -nc $i
+  wget -nc $i
   # extract sources
   LANG=pt_BR; unzip $file -d $ano
   # some zips are actually rar. pfff. try it too.
-  unrar --enable-charset x $file $ano
+  unrar x $file $ano
   # limpa e corrige fontes cagadas
   echo "=> limpando $ano..."
   find $ano \( -name '*.csv' -o -name "*.CSV" -o -name "*.txt" -o -name "*.TXT" \) -print0 | xargs -0 \
