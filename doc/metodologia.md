@@ -1,11 +1,26 @@
 ## Metodologia
 
-Com o [MySQL](https://dev.mysql.com/downloads/mysql/) como Sistema Gerenciador de Banco de Dados,
+O objetivo é estruturar uma base de dados relacional integra, onde se possa utilizar o [SQL](https://pt.wikipedia.org/wiki/SQL) - linguagem de consulta estruturada - para inferir conhecimento relativo ao financiamento "legal" dos últimos 15 anos de campanhas políticas no Brasil.
+
+Muitos dados da fonte são ignorados, pois o foco são as receitas das doaçoes, não as despesas.
+
+---
+A execução do script [ilumina.sh](../ilumina.sh) automatiza todo o processo descrito abaixo, incluíndo o download das fontes originais. Edite aí antes a configuração de acesso a seu DB.
+
+---
+
+Primeiro, é fundamental corrigir os erros de má-formatação das fontes do TSE, removendo espaços extras, campos nulos e as aspas excessivas inválidas:
+
+```
+sed -e "s/\"\ /\"/g; s/\ \"/\"/g; s/\ +/\ /g; s/\"//g; s/#NULO#//g; s/#NULO//g" -i fontes_tse/*.txt
+```
+
+Com o [MySQL](https://dev.mysql.com/downloads/mysql/) como Sistema Gerenciador de Banco de Dados Relacional,
 ```sql
 CREATE DATABASE tse;
 ```
 
-Após analise intuitiva de cada arquivo .CSV (valores separados por vírgulas) disponibilizado no [Repositório de Dados Eleitorais do TSE](www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais) contendo os dados de Doações para Candidados e Comites, a seguinte *tabela* é proposta;
+Após analise intuitiva de cada arquivo .CSV (valores separados por vírgulas) disponibilizado no [Repositório de Dados Eleitorais do TSE](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais) contendo os dados das *receitas* de Doações para Candidados, Comites e Partidos, a seguinte *tabela* é proposta;
 
 ```sql
 CREATE TABLE `doacoes` (
@@ -29,21 +44,13 @@ CREATE TABLE `doacoes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 ```
 
-Como cada arquivo .CSV do TSE tem uma estrutura/layout diferente, é necessária uma adaptação no SQL de importação para cada arquivo. Como exemplo, para importar a prestação de contas dos candidatos de 2016:
-
-- Remove campos nulos, as aspas excessivas e inválidas do .CSV, :
-```
-sed -e "s/\"//g" -i receitas_candidatos_2014_brasil.txt
-sed -e "s/#NULO#//g" -i receitas_candidatos_2014_brasil.txt
-sed -e "s/#NULO//g" -i receitas_candidatos_2014_brasil.txt
-```
+Como cada arquivo .CSV do TSE tem uma estrutura/layout diferente, é necessária uma adaptação no SQL de importação para cada fonte. Como exemplo, para importar a prestação de contas das receitas dos candidatos de 2016:
 
 ```sql
 use tse;
 load data local infile './fontes_tse/2016/receitas_candidatos_prestacao_contas_final_2016_brasil.csv '
   into table doacoes
     fields terminated by ';'
-    enclosed by '"'
     lines terminated by '\n'
     ignore 1 lines
     (@cod, @desc, @data, @pretador, @seqcand, @uf, @nomeuf, @siglauf, @partido,
@@ -52,7 +59,7 @@ load data local infile './fontes_tse/2016/receitas_candidatos_prestacao_contas_f
         @seteco, @data, @valor, @tipo, @fonte, @especie,
           @descrec, @cpforiginario, @nomedoador, @tipodoro, @setorigi, @nomeorig)
 SET
-    ano="2016", tipo="candidato",
+  ano="2016", tipo="candidato",
   uf = @uf, nome=@nome, cargo=@cargo, numero=@numero, cpf=@cpf, cpf_vice=@cpfvice, cpf_candidato=@cpfcandidato,
   doador=@doador, partido=@partido,
   recurso = @tipo,
@@ -66,7 +73,7 @@ para importar os  dados dos *comites* do .CSV de 2016
 use tse;
 load data local infile './fontes_tse/2016/receitas_partidos_prestacao_contas_final_2016_brasil.csv'
   into table doacoes
-    fields terminated by ';'
+  fields terminated by ';'
     enclosed by '"'
     lines terminated by '\n'
     ignore 1 lines
@@ -87,9 +94,9 @@ load data local infile './fontes_tse/2016/receitas_partidos_prestacao_contas_fin
   valor=cast(replace(@valor, ',', '.') AS decimal( 9, 2 ) )
 ```
 
-Com a tabela *doacoes* contendo os dados de todos os CVSs, muitas consultas já podem ser realizadas, mas vamos abstrair as redundancias pra otimizar as possíveis consultas.
+Com a tabela *doacoes* contendo os dados de todos os CVSs, muitas consultas já podem ser realizadas, mas vamos abstrair as redundancias pra otimizar os possíveis futuros inquéritos.
 
-- Extrair *Candidatos*
+- Extrair tabela *Candidatos*
 
 ```sql
 CREATE TABLE candidatos
@@ -103,7 +110,7 @@ ALTER TABLE `tse`.`candidatos`
   ADD PRIMARY KEY (`id`);
 ```
 
-- Extrair *Doadores*
+- Extrair tabela *Doadores*
 
 ```sql
 create table doadores
@@ -117,7 +124,7 @@ ALTER TABLE `tse`.`doadores`
   ADD PRIMARY KEY (`id`);
 ```
 
-- Extrair *Comites*
+- Extrair tabela *Comites*
 
 ```sql
 create table comites
@@ -237,6 +244,7 @@ update doadores d,
 ```
 
 - Corrige algumas datas automaticamente
+
 ```sql
   ALTER TABLE `tse`.`doacoes`
     ADD COLUMN `quando` DATE NULL AFTER `data`;
@@ -258,4 +266,4 @@ Por fim temos a seguinte estrutura
 
 ![modelo](modelo.png)
 
-Ok. Ufa! A partir disso é possível iniciar quaisquer inquéritos e investigações sólidas a partir de perguntas bem formuladas.
+Ok. Ufa! A partir disso é possível iniciar quaisquer inquéritos e investigações sólidas a partir de perguntas bem formuladas em SQL.
