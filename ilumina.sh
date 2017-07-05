@@ -6,7 +6,7 @@
 db_user="root"
 db_pass="12**root**13"
 
-# needs p7zip-rar wget mysql
+# requires p7zip-rar wget mysql
 CMDS="7z wget mysql"
 for i in $CMDS; do
 	command -v $i >/dev/null && continue || { echo "=> install $i"; exit 1; }
@@ -49,7 +49,7 @@ do
   file $file
   extension=$(file $file | grep -Po " \w{3}+ " | sed 's/\ //g' | tr '[A-Z]' '[a-z]')
   # extrai com 7zip para resolver os problemas de encoding
-  7z x -y -t$extension $file -o$ano
+  #7z x -y -t$extension $file -o$ano
   # limpa e corrige .CSVs cagados: remove nulos, espaços e aspas extras inválidas
   echo "=> limpando $ano..."
   find $ano \( -name '*.csv' -o -name "*.CSV" -o -name "*.txt" -o -name "*.TXT" \) -print0 | xargs -0 \
@@ -59,7 +59,8 @@ cd ..
 
 # gera db!
 for sql in scripts/*.sql; do
-  echo "=> loading $sql"; mysql -u$db_user -p$db_pass < $sql;
+  echo "=> loading $sql";
+	mysql -u$db_user -p$db_pass < $sql;
 done
 
 cd fontes_tse/
