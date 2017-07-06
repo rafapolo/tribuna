@@ -11,6 +11,8 @@ CMDS="7z wget mysql"
 for i in $CMDS; do
 	command -v $i >/dev/null && continue || { echo "=> install $i"; exit 1; }
 done
+# make sure you have p7zip-rar installed!
+# it decompress with correct pt_BR encoding.
 
 # test MySQL database
 test_mysql=$(mysqladmin -u$db_user -p$db_pass ping 2>&1)
