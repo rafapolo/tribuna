@@ -12,7 +12,7 @@ for i in $CMDS; do
 	command -v $i >/dev/null && continue || { echo "=> install $i"; exit 1; }
 done
 
-# test MySQL
+# test MySQL database
 test_mysql=$(mysqladmin -u$db_user -p$db_pass ping 2>&1)
 echo $test_mysql
 case $test_mysql in
@@ -49,18 +49,19 @@ do
   file $file
   extension=$(file $file | grep -Po " \w{3}+ " | sed 's/\ //g' | tr '[A-Z]' '[a-z]')
   # extrai com 7zip para resolver os problemas de encoding
-  #7z x -y -t$extension $file -o$ano
-  # limpa e corrige .CSVs cagados: remove nulos, espaços e aspas extras inválidas
+  7z x -y -t$extension $file -o$ano
+  # limpa e corrige .CSVs cagados, se precisar
+	# remove nulos, espaços, semi-vírgulas e aspas extras inválidas
   echo "=> limpando $ano..."
-  find $ano \( -name '*.csv' -o -name "*.CSV" -o -name "*.txt" -o -name "*.TXT" \) -print0 | xargs -0 \
-   sed -e "s/\"\ /\"/g; s/\ \"/\"/g; s/\ +/\ /g; s/\"//g; s/#NULO#//g; s/#NULO//g" -i  --
+	sh ../scripts/clean_csv/clean_$ano.sh
 done
 cd ..
 
 # gera db!
-for sql in scripts/*.sql; do
+export MYSQL_PWD=$db_pass
+for sql in scripts/sql_load_csv/*.sql; do
   echo "=> loading $sql";
-	mysql -u$db_user -p$db_pass < $sql;
+	mysql -u$db_user < $sql;
 done
 
 cd fontes_tse/
@@ -68,4 +69,5 @@ ls -alho
 gb=`du -sh | cut -f1`
 echo "=> total gerado: $gb";
 # todo: perguntar se remove os GBs de fontes
+echo "=> remova /fontes_tse, se database Ok."
 # rm -rf ../fontes_tse
