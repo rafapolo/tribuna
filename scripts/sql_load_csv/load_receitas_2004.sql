@@ -1,11 +1,6 @@
 use tse;
 
--- csv header
--- NO_CAND;DS_CARGO;CD_CARGO;NR_CAND;SG_UE_SUP;NO_UE;SG_UE;NR_PART;SG_PART;
--- VR_RECEITA;DT_RECEITA;RTRIM(LTRIM(DR.DS_TITULO));CD_TITULO;DECODE(REC.TP_RECURSO,0,'EMESP�CIE',1,'CHEQUE',2,'ESTIMADO','N�OINFORMADO');TP_RECURSO;NO_DOADOR;CD_CPF_CGC_DOA;RV_MEANING
--- JO�O AUGUSTO MOREIRA PEREIRA;Vereador;13;11101;RJ;RIO DE JANEIRO;60011;11;PP;
--- 768;27/09/2004;Recursos de Pessoas Juridicas;10010300;Estimado;2;PARTIDO PROGRESSISTA;00887169000296;Regular
-
+-- load candidatos
 load data local infile 'fontes_tse/2004/2004/Candidato/Receita/ReceitaCandidato.CSV'
   into table doacoes
     fields terminated by ';'
@@ -21,3 +16,22 @@ SET
   recurso = @especie,
   data=left(@data , 10),
   valor=cast(replace(@valor, ',', '.') AS decimal( 9, 2 ));
+
+-- load comites
+load data local infile 'fontes_tse/2004/2004/Comit/Receita/ReceitaComit.CSV'
+  into table doacoes
+    fields terminated by ';'
+    ignore 1 lines
+    (@tipodiretorio, @numero, @partido, @uf, @seqcom, @uf_b, @valor, @data, @tit_a, @tit_b,
+    @recurso, @tp_recurso, @doador, @cpf, @meaning)
+
+  SET
+    ano="2004", tipo="comite",
+    uf = @uf, nome=@tipodiretorio, cpf=@cpforig,
+    doador=@doador, partido=@partido,
+    numero=@numero,
+    cpf=@cpf,
+    recurso = @tipo,
+    motivo = @descrec,
+    data=left(@data , 10),
+    valor=cast(replace(@valor, ',', '.') AS decimal( 9, 2 ))
