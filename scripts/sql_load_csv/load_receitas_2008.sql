@@ -13,17 +13,20 @@ load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Candidato/Rec
 
   SET
     ano="2008", tipo="candidato",
-    uf = @uf,
-    nome=@nome,
-    cargo=@cargo,
-    numero=@numero,
-    cpf=@cpf,
-    cpf_candidato=@cpf_candidato,
-    doador=@doador,
-    partido=@partido,
-    recurso = @tipo,
-    data=left(@data , 10),
-    valor=cast(replace(@valor, ',', '.') AS decimal( 9, 2 ));
+    uf = TRIM(@uf),
+    nome=TRIM(@nome),
+    cargo=TRIM(@cargo),
+    numero=TRIM(@numero),
+    cpf=TRIM(@cpf),
+    cpf_candidato=TRIM(@cpf_candidato),
+    doador=TRIM(@doador),
+    partido=TRIM(@partido),
+    recurso = TRIM(@tipo),
+    motivo=TRIM(@motivo),
+    data=left(TRIM(@data) , 10),
+    valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
+  SHOW WARNINGS;
+
 
 -- load comites
 load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Comitê/Receita/ReceitaComitê.CSV'
@@ -37,14 +40,16 @@ load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Comitê/Recei
 
   SET
     ano="2008", tipo="comite",
-    uf = @uf,
-    nome=@tipodiretorio,
-    cpf=@cpforig,
-    doador=@doador, partido=@partido,
-    numero=@numero,
-    cpf_candidato=@cpf,
-    cpf=@cpf_doador,
-    recurso = @tipo,
-    motivo = @motivo,
-    data=left(@data , 10),
-    valor=cast(replace(@valor, ',', '.') AS decimal( 9, 2 ))
+    uf = TRIM(@uf),
+    nome=TRIM(@tipodiretorio),
+    cpf=TRIM(@cpforig),
+    doador=TRIM(@doador),
+    partido=TRIM(@partido),
+    numero=TRIM(@numero),
+    cpf_candidato=TRIM(@cpf),
+    cpf=TRIM(@cpf_doador),
+    recurso = TRIM(@tipo),
+    motivo = TRIM(@motivo),
+    data=left(TRIM(@data) , 10),
+    valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
+  SHOW WARNINGS;

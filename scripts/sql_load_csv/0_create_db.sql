@@ -3,14 +3,13 @@ CREATE DATABASE tse;
 USE tse;
 
 CREATE TABLE `doacoes` (
-  `uf` varchar(2) NOT NULL,
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `uf` varchar(2) NOT NULL,
   `partido` varchar(8) DEFAULT NULL,
   `cargo` varchar(255) DEFAULT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `numero` int(15) DEFAULT NULL,
   `ano` int(4) DEFAULT NULL,
-  `cpf_vice` varchar(20) DEFAULT NULL,
   `cpf_candidato` varchar(20) DEFAULT NULL,
   `doador` varchar(255) DEFAULT NULL,
   `cpf` varchar(20) DEFAULT NULL,
