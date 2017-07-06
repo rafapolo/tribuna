@@ -24,14 +24,13 @@ Após analise intuitiva de cada arquivo .CSV (valores separados por vírgulas) d
 
 ```sql
 CREATE TABLE `doacoes` (
-  `uf` varchar(2) NOT NULL,
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `uf` varchar(2) NOT NULL,
   `partido` varchar(8) DEFAULT NULL,
   `cargo` varchar(255) DEFAULT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `numero` int(15) DEFAULT NULL,
   `ano` int(4) DEFAULT NULL,
-  `cpf_vice` varchar(20) DEFAULT NULL,  
   `cpf_candidato` varchar(20) DEFAULT NULL,  
   `doador` varchar(255) DEFAULT NULL,
   `cpf` varchar(20) DEFAULT NULL,  
@@ -53,7 +52,7 @@ load data local infile './fontes_tse/2016/receitas_candidatos_prestacao_contas_f
     fields terminated by ';'
     lines terminated by '\n'
     ignore 1 lines
-    (@cod, @desc, @data, @pretador, @seqcand, @uf, @nomeuf, @siglauf, @partido,
+    (@cod, @descr, @data, @pretador, @seqcand, @uf, @nomeuf, @siglauf, @partido,
     @numero, @cargo, @nome, @cpfcandidato, @cpfvice, @recibo, @numdoc, @cpf,
       @doador, @nomdoadreceita, @uf_doador, @numpart, @numcandd, @codseeco,
         @seteco, @data, @valor, @tipo, @fonte, @especie,
@@ -78,7 +77,7 @@ load data local infile './fontes_tse/2016/receitas_partidos_prestacao_contas_fin
     lines terminated by '\n'
     ignore 1 lines
 
-    (@cod, @desc, @data, @pretador, @seqcand, @uf, @nomeuf, @siglauf, @tipodiretorio, @partido,
+    (@cod, @descr, @data, @pretador, @seqcand, @uf, @nomeuf, @siglauf, @tipodiretorio, @partido,
     @numero, @numdoc, @cpf, @doador, @nomdoadreceita, @uf_doador, @numero, @numcandd, @codseeco,
         @seteco, @data, @valor, @tipo, @fonte, @especie,
           @descrec, @cpforig, @nomedoador, @tipodoro, @setorigi, @nomeorig)

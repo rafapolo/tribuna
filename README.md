@@ -24,10 +24,9 @@ Se um *Tribunal* é o lugar onde se administra Justiça, o TSE peca. Voltemos a 
 ### Como?
 Ver a [metodologia](doc/metodologia.md).
 
-O processo de baixar as fontes originais e preparar o DB relacional pode levar horas. Alternativamente, há o download do [dump do database](http://extrapolo.com/projeto/tse/tse2016.sql.tar.bz2) pronto.
+O processo *auditável* proposto para baixar as fontes originais, limpar e preparar o DB relacional pode levar horas, alternativamente, há o download do [dump do database](http://extrapolo.com/projeto/tse/tse2016.sql.tar.bz2) pronto.
 
 ![modelo](doc/modelo.png)
-
 
 
 ---
