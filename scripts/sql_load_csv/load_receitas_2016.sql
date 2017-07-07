@@ -1,6 +1,6 @@
 use tse;
 -- load candidatos
-load data local infile '/home/lontra/Projetos/tribuna/fontes_tse/2016/receitas_candidatos_prestacao_contas_final_2016_brasil.txt'
+load data local infile 'fontes_tse/2016/receitas_candidatos_prestacao_contas_final_2016_brasil.txt'
   into table doacoes
   fields terminated by ';'
   lines terminated by '\n'
@@ -25,8 +25,8 @@ SET
   data=left(TRIM(@data) , 10),
   valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
 
--- load comites
-load data local infile '/home/lontra/Projetos/tribuna/fontes_tse/2016/receitas_partidos_prestacao_contas_final_2016_brasil.txt'
+-- load partidos
+load data local infile 'fontes_tse/2016/receitas_partidos_prestacao_contas_final_2016_brasil.txt'
   into table doacoes
     fields terminated by ';'
     lines terminated by '\n'
