@@ -2,18 +2,20 @@
 
 O objetivo é estruturar uma base de dados relacional integra, onde se possa utilizar o [SQL](https://pt.wikipedia.org/wiki/SQL) - linguagem de consulta estruturada - para inferir conhecimento relativo ao financiamento "legal" dos últimos 15 anos de campanhas políticas no Brasil.
 
+A execução do script [ilumina.sh](../ilumina.sh) automatiza todo o processo descrito abaixo, incluíndo o download das fontes originais. Edite aí antes a configuração de acesso a seu DB.
+
 Muitos dados da fonte são ignorados, pois o foco são as receitas das doaçoes, não as despesas.
 
 ---
-A execução do script [ilumina.sh](../ilumina.sh) automatiza todo o processo descrito abaixo, incluíndo o download das fontes originais. Edite aí antes a configuração de acesso a seu DB.
 
----
-
-Primeiro, é fundamental corrigir os erros de má-formatação das fontes do TSE, removendo espaços extras, campos nulos e as aspas excessivas inválidas:
+Primeiro, é fundamental corrigir os erros de má-formatação das fontes do TSE, removendo espaços extras, campos nulos e as aspas excessivas inválidas. Cada ano exige uma limpeza distinta, mas em geral utiliza-se:
 
 ```
 sed -e "s/\"\ /\"/g; s/\ \"/\"/g; s/\ +/\ /g; s/\"//g; s/#NULO#//g; s/#NULO//g" -i fontes_tse/*.txt
 ```
+Ver os [scripts](/scripts).
+
+---
 
 Com o [MySQL](https://dev.mysql.com/downloads/mysql/) como Sistema Gerenciador de Banco de Dados Relacional,
 ```sql
