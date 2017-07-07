@@ -1,5 +1,4 @@
 use tse
-
 -- load candidatos
 load data local infile 'fontes_tse/2012/receitas_candidatos_2012_brasil.txt'
   into table doacoes
@@ -46,6 +45,30 @@ load data local infile 'fontes_tse/2012/receitas_comites_2012_brasil.txt'
     numero=TRIM(@numero),
     cpf=TRIM(@cpf),
     recurso = TRIM(@tipo),
+    motivo = TRIM(@motivo),
+    data=left(TRIM(@data) , 10),
+    valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
+  SHOW WARNINGS;
+
+-- load partidos
+load data local infile 'fontes_tse/2012/receitas_partidos_2012_brasil.txt'
+  into table doacoes
+    fields terminated by ';'
+    lines terminated by '\n'
+    ignore 1 lines
+
+    (@cel, @desele, @dtpro, @seqcom, @uf, @cuf, @mun, @tipodiretorio, @partido, @tdoc, @ndoc,
+    @cpf, @doador, @nomrec, @setec, @sue, @npar, @ncd, @csed, @data, @valor, @trec, @fonte, @especie, @motivo)
+
+  SET
+    ano="2012", tipo="partido",
+    uf = TRIM(@uf),
+    nome=TRIM(@tipodiretorio),
+    cpf=TRIM(@cpforig),
+    doador=TRIM(@doador), partido=TRIM(@partido),
+    numero=TRIM(@numero),
+    cpf=TRIM(@cpf),
+    recurso = TRIM(@especie),
     motivo = TRIM(@motivo),
     data=left(TRIM(@data) , 10),
     valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));

@@ -1181,3 +1181,593 @@ SET ano="2010",
     motivo=@motivo,
     data=left(@data, 10),
     valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+
+-- load partidos
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/AC/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated by ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/AL/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/AM/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/AP/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/BA/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/BR/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/CE/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/DF/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/ES/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/GO/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/MA/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/MG/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/MS/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/MT/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/PA/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/PB/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/PE/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/PI/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/PR/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/RJ/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/RN/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/RO/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/RR/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/RS/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/SC/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/SE/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/SP/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
+
+LOAD DATA LOCAL infile 'fontes_tse/2010/partido/TO/ReceitasPartidos.txt'
+INTO TABLE doacoes
+fields terminated BY ';'
+lines terminated BY '\n'
+IGNORE 1 lines
+(@proc, @uf, @nome, @partido, @doc, @ndoc, @cpf, @doador, @data, @valor, @tp_rec, @c, @recurso, @motivo)
+SET ano="2010",
+tipo="partido",
+uf = @uf,
+nome=@nome,
+cargo=@cargo,
+numero=@numero,
+cpf=@cpf,
+cpf_candidato=@cpf_candidato,
+doador=@doador,
+partido=@partido,
+recurso = @recurso,
+motivo=@motivo,
+data=left(@data, 10),
+valor=cast(replace(@valor, ',', '.') AS decimal(9, 2));
