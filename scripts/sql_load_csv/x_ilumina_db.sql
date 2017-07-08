@@ -75,20 +75,26 @@ update doacoes d, comites c
   set d.comite_id = c.id
     where d.partido = c.partido and d.nome=c.nome and c.uf=d.uf;
 
+-- otimiza
 ALTER TABLE `tse`.`doacoes`
   ADD INDEX `doacoes_ibfk_1_idx` (`candidato_id` ASC),
   ADD INDEX `doacoes_ibfk_2_idx` (`comite_id` ASC),
   ADD INDEX `doacoes_ibfk_3_idx` (`doador_id` ASC),
   ADD CONSTRAINT `doacoes_ibfk_1`
     FOREIGN KEY (`candidato_id`)
-    REFERENCES `tse`.`candidatos` (`id`)
+    REFERENCES `tse`.`candidatos` (`id`);
+
+ALTER TABLE `tse`.`doacoes`
   ADD CONSTRAINT `doacoes_ibfk_2`
     FOREIGN KEY (`comite_id`)
-    REFERENCES `tse`.`comites` (`id`)
+    REFERENCES `tse`.`comites` (`id`);
+
+ALTER TABLE `tse`.`doacoes`
   ADD CONSTRAINT `doacoes_ibfk_3`
     FOREIGN KEY (`doador_id`)
-    REFERENCES `tse`.`doadores` (`id`)
+    REFERENCES `tse`.`doadores` (`id`);
 
+-- remove o que foi abstraído
 ALTER TABLE `tse`.`doacoes`
   DROP COLUMN `cpf_candidato`,
   DROP COLUMN `doador`,
@@ -101,7 +107,7 @@ ALTER TABLE `tse`.`doacoes`
   DROP INDEX `index_candidato` ,
   DROP INDEX `index_doador` ;
 
--- indexa novo atributo valor_total e doacoes_count
+-- indexa valor_total e doacoes_count
 ALTER TABLE `tse`.`comites`
   ADD COLUMN `valor_total` DOUBLE(12,2) NULL;
 
@@ -136,5 +142,5 @@ ALTER TABLE `tse`.`candidatos`
     set d.doacoes_count = c.qtd
       where c.doador_id = d.id;
 
--- otimiza e grita Gol!
+-- otimiza redondo e grita Gol!
 OPTIMIZE TABLE doadores, candidatos, comites, doacoes;
