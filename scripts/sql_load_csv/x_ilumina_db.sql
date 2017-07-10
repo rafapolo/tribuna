@@ -1,63 +1,63 @@
 use tse;
 
 -- conserta datas
-ALTER TABLE `tse`.`doacoes`
-  ADD COLUMN `quando` DATE NULL AFTER `data`;
-
-update doacoes set quando = STR_TO_DATE(`data`, '%d/%m/%Y') WHERE quando is null AND data REGEXP '^[0-9]{1,2}/\[0-9]{2}/\[0-9]{4}$';
-update doacoes set quando = str_to_date(data, '%d-%b-%y') where quando is null AND data REGEXP '^[0-9]{1,2}-.{3}-[0-9]{2,4}$';
+-- ALTER TABLE `tse`.`doacoes`
+--   ADD COLUMN `quando` DATE NULL AFTER `data`;
+--
+-- update doacoes set quando = STR_TO_DATE(`data`, '%d/%m/%Y') WHERE quando is null AND data REGEXP '^[0-9]{1,2}/\[0-9]{2}/\[0-9]{4}$';
+-- update doacoes set quando = str_to_date(data, '%d-%b-%y') where quando is null AND data REGEXP '^[0-9]{1,2}-.{3}-[0-9]{2,4}$';
 -- todo: 692 datas vieram cagadas. erro no CSV ou na limpeza?
 -- SELECT data, count(*) FROM doacoes WHERE data is not null and data!='' and quando is ull group by data;
 -- SELECT ano, count(*) FROM doacoes WHERE data is not null and data!='' and quando is null group by ano;
 
-abstrai Candidatos
-drop table if exists candidatos;
-CREATE TABLE candidatos
-  select partido, uf, ano, nome, cargo, numero, cpf_candidato
-    from doacoes
-      where tipo="candidato"
-        group by partido, uf, ano, nome, cargo, numero, cpf_candidato;
-
-ALTER TABLE `tse`.`candidatos`
-  ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST,
-  ADD PRIMARY KEY (`id`);
-
--- abstrai Doadores
-drop table if exists doadores;
-create table doadores
-select doador, cpf
-  from doacoes
-    group by doador, cpf;
-
-ALTER TABLE `tse`.`doadores`
-  ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST,
-  ADD PRIMARY KEY (`id`);
-
--- abstrai Comites
-drop table if exists comites;
-create table comites
-  SELECT nome, partido, uf
-  FROM doacoes where tipo != 'candidato'
-    group by nome, partido, uf;
-
-ALTER TABLE `tse`.`comites`
-  ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST,
-  ADD PRIMARY KEY (`id`);
-
-CREATE INDEX index_doador ON doadores ( doador, cpf );
-CREATE INDEX index_doador ON doacoes ( doador, cpf );
-
--- aumenta limte de execução das queries para o grosso que há por vir
-SET SESSION MAX_EXECUTION_TIME=20000000;
-
--- co-relaciona novas tabelas abstraídas com atual Doaçoes
-ALTER TABLE `tse`.`doacoes`
-  ADD COLUMN `candidato_id` INT(7) NULL AFTER `id`,
-  ADD COLUMN `doador_id` INT(7) NULL AFTER `candidato_id`,
-  ADD COLUMN `comite_id` INT(7) NULL AFTER `doador_id`;
-
-CREATE INDEX index_candidato ON candidatos ( nome, cpf_candidato, numero, partido, ano, cargo );
-CREATE INDEX index_candidato ON doacoes ( nome, cpf_candidato, numero, partido, ano, cargo );
+-- abstrai Candidatos
+-- drop table if exists candidatos;
+-- CREATE TABLE candidatos
+--   select partido, uf, ano, nome, cargo, numero, cpf_candidato
+--     from doacoes
+--       where tipo="candidato"
+--         group by partido, uf, ano, nome, cargo, numero, cpf_candidato;
+--
+-- ALTER TABLE `tse`.`candidatos`
+--   ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST,
+--   ADD PRIMARY KEY (`id`);
+--
+-- -- abstrai Doadores
+-- drop table if exists doadores;
+-- create table doadores
+-- select doador, cpf
+--   from doacoes
+--     group by doador, cpf;
+--
+-- ALTER TABLE `tse`.`doadores`
+--   ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST,
+--   ADD PRIMARY KEY (`id`);
+--
+-- -- abstrai Comites
+-- drop table if exists comites;
+-- create table comites
+--   SELECT nome, partido, uf
+--   FROM doacoes where tipo != 'candidato'
+--     group by nome, partido, uf;
+--
+-- ALTER TABLE `tse`.`comites`
+--   ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST,
+--   ADD PRIMARY KEY (`id`);
+--
+-- CREATE INDEX index_doador ON doadores ( doador, cpf );
+-- CREATE INDEX index_doador ON doacoes ( doador, cpf );
+--
+-- -- aumenta limte de execução das queries para o grosso que há por vir
+-- SET SESSION MAX_EXECUTION_TIME=20000000;
+--
+-- -- co-relaciona novas tabelas abstraídas com atual Doaçoes
+-- ALTER TABLE `tse`.`doacoes`
+--   ADD COLUMN `candidato_id` INT(7) NULL AFTER `id`,
+--   ADD COLUMN `doador_id` INT(7) NULL AFTER `candidato_id`,
+--   ADD COLUMN `comite_id` INT(7) NULL AFTER `doador_id`;
+--
+-- CREATE INDEX index_candidato ON candidatos ( nome, cpf_candidato, numero, partido, ano, cargo );
+-- CREATE INDEX index_candidato ON doacoes ( nome, cpf_candidato, numero, partido, ano, cargo );
 
 update doacoes d, doadores dd
   set d.doador_id = dd.id
@@ -93,18 +93,18 @@ ALTER TABLE `tse`.`doacoes`
     REFERENCES `tse`.`doadores` (`id`);
 
 -- remove o que foi abstraído
-ALTER TABLE `tse`.`doacoes`
-DROP COLUMN `data`;
-  DROP COLUMN `cpf_candidato`,
-  DROP COLUMN `doador`,
-  DROP COLUMN `cpf`,
-  DROP COLUMN `numero`,
-  DROP COLUMN `nome`,
-  DROP COLUMN `cargo`,
-  DROP COLUMN `partido`,
-  DROP COLUMN `tipo`,
-  DROP INDEX `index_candidato` ,
-  DROP INDEX `index_doador` ;
+-- ALTER TABLE `tse`.`doacoes`
+-- DROP COLUMN `data`;
+--   DROP COLUMN `cpf_candidato`,
+--   DROP COLUMN `doador`,
+--   DROP COLUMN `cpf`,
+--   DROP COLUMN `numero`,
+--   DROP COLUMN `nome`,
+--   DROP COLUMN `cargo`,
+--   DROP COLUMN `partido`,
+--   DROP COLUMN `tipo`,
+--   DROP INDEX `index_candidato` ,
+--   DROP INDEX `index_doador` ;
 
 -- indexa valor_total e doacoes_count
 ALTER TABLE `tse`.`comites`
