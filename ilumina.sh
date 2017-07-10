@@ -51,8 +51,8 @@ do
   # detectar tipo de compressão: há ZIPs que são RARs!
   file $file
   extension=$(file $file | grep -Po " \w{3}+ " | sed 's/\ //g' | tr '[A-Z]' '[a-z]')
-  # extrai com 7zip para resolver os problemas de encoding
-  #7z x -y -t$extension $file -o$ano
+	# extrai com 7zip para resolver os problemas de encoding
+	7z x -y -t$extension $file -o$ano
 	# limpa e corrige .CSVs cagados, se precisar
 	# remove nulos, espaços, semi-vírgulas e aspas extras inválidas
 	echo "=> limpando $ano..."
