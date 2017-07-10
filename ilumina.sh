@@ -11,7 +11,7 @@ db_pass="12**root**13"
 # requires p7zip-rar wget mysql
 CMDS="7z wget mysql"
 for i in $CMDS; do
-	command -v $i >/dev/null && continue || { echo "=> install $i"; exit 1; }
+    command -v $i >/dev/null && continue || { echo "=> install $i"; exit 1; }
 done
 # make sure you have p7zip-rar installed!
 # it decompress with correct pt_BR encoding.
@@ -51,20 +51,20 @@ do
   # detectar tipo de compressão: há ZIPs que são RARs!
   file $file
   extension=$(file $file | grep -Po " \w{3}+ " | sed 's/\ //g' | tr '[A-Z]' '[a-z]')
-	# extrai com 7zip para resolver os problemas de encoding
-	7z x -y -t$extension $file -o$ano
-	# limpa e corrige .CSVs cagados, se precisar
-	# remove nulos, espaços, semi-vírgulas e aspas extras inválidas
-	echo "=> limpando $ano..."
-	sh ../scripts/clean_csv/clean_$ano.sh;
-done
+  # extrai com 7zip para resolver os problemas de encoding
+  7z x -y -t$extension $file -o$ano
+  # limpa e corrige .CSVs cagados, se precisar
+  # remove nulos, espaços, semi-vírgulas e aspas extras inválidas
+  echo "=> limpando $ano..."
+  sh ../scripts/clean_csv/clean_$ano.sh;
+  done
 cd ..
 
 # monta db!
 export MYSQL_PWD=$db_pass
 for sql in scripts/sql_load_csv/*.sql; do
   echo "=> loading $sql";
-	mysql -u$db_user < $sql;
+  mysql -u$db_user < $sql;
 done
 
 # stats
