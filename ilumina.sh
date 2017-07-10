@@ -2,6 +2,8 @@
 # = Tribuna =
 # https://github.com/rafapolo/tribuna
 
+start=`date +%s`
+
 # setup your MySQL access before run
 db_user="root"
 db_pass="12**root**13"
@@ -37,39 +39,40 @@ fontes_tse=(
 # todo: salva MD5 dos arquivos, compara e avisa se TSE mudar fonte original.
 # warning: se estrutura do ZIP ou headers mudarem, scripts/*.sql devem refletir mudanças.
 
-echo "=> download fontes..."
-mkdir fontes_tse;
-cd fontes_tse;
-for i in ${fontes_tse[*]}
-do
-  ano=$(echo "$i" | sed 's/[^0-9]*//g')
-  mkdir $ano
-  file=${i##*/}
-  # download, se não existe
-  wget -nc $i
-  # detectar tipo de compressão: há ZIPs que são RARs!
-  file $file
-  extension=$(file $file | grep -Po " \w{3}+ " | sed 's/\ //g' | tr '[A-Z]' '[a-z]')
-  # extrai com 7zip para resolver os problemas de encoding
-  7z x -y -t$extension $file -o$ano
-	# limpa e corrige .CSVs cagados, se precisar
-	# remove nulos, espaços, semi-vírgulas e aspas extras inválidas
-  echo "=> limpando $ano..."
-	sh ../scripts/clean_csv/clean_$ano.sh;
-done
-cd ..
+# echo "=> download fontes..."
+# mkdir fontes_tse;
+# cd fontes_tse;
+# for i in ${fontes_tse[*]}
+# do
+#   ano=$(echo "$i" | sed 's/[^0-9]*//g')
+#   mkdir $ano
+#   file=${i##*/}
+#   # download, se não existe
+#   wget -nc $i
+#   # detectar tipo de compressão: há ZIPs que são RARs!
+#   file $file
+#   extension=$(file $file | grep -Po " \w{3}+ " | sed 's/\ //g' | tr '[A-Z]' '[a-z]')
+#   # extrai com 7zip para resolver os problemas de encoding
+#   #7z x -y -t$extension $file -o$ano
+# 	# limpa e corrige .CSVs cagados, se precisar
+# 	# remove nulos, espaços, semi-vírgulas e aspas extras inválidas
+# 	echo "=> limpando $ano..."
+# 	sh ../scripts/clean_csv/clean_$ano.sh;
+# done
+# cd ..
 
-# gera db!
+# monta db!
 export MYSQL_PWD=$db_pass
 for sql in scripts/sql_load_csv/*.sql; do
   echo "=> loading $sql";
 	mysql -u$db_user < $sql;
 done
 
-cd fontes_tse/
-ls -alho
+# stats
 gb=`du -sh | cut -f1`
-echo "=> total gerado: $gb";
-# todo: perguntar se remove os GBs de fontes
+end=`date +%s`
+secs=$((end-start))
+ls -alho
+printf "=> $gb de dados | processado em %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
 echo "=> remova /fontes_tse, se database Ok."
 # rm -rf ../fontes_tse

@@ -8,7 +8,7 @@ Muitos dados da fonte são ignorados, pois o foco são as receitas das doaçoes,
 
 ---
 
-Primeiro, é fundamental corrigir os erros de má-formatação das fontes do TSE, removendo espaços extras, campos nulos e as aspas excessivas inválidas. Cada ano exige uma limpeza distinta, mas em geral utiliza-se:
+Primeiro, é fundamental corrigir os erros de má-formatação das fontes do TSE, *removendo espaços extras, campos nulos e as aspas excessivas inválidas*. Cada ano exige uma limpeza distinta, mas em geral utiliza-se:
 
 ```
 sed -e "s/\"\ /\"/g; s/\ \"/\"/g; s/\ +/\ /g; s/\"//g; s/#NULO#//g; s/#NULO//g" -i fontes_tse/*.txt
