@@ -37,7 +37,7 @@ O script **auditável** proposto [ilumina.sh](ilumina.sh) pega as fontes oficiai
 
 - [Dashboard](https://meta.mostre.me/public/dashboard/af26d09e-2994-4e39-8593-49e8a87fe5f5) básico com dados da Tribuna
 - [Wiki](https://github.com/rafapolo/tribuna/wiki/SQL) de inquéritos básicos em [SQL](https://pt.wikipedia.org/wiki/SQL)
-- [tse-monit](https://try.gogs.io/rafapolo/tse-monit) para monitorar mudanças
+- [tse-monit](http://git.mostre.me/rafapolo/tse-monit) para monitorar mudanças
 - [Mostre!me Eleições](https://mostre.me/eleicoes) subversão 0.1
 ---
 

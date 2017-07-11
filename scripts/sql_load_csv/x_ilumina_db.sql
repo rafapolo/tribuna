@@ -94,7 +94,7 @@ ALTER TABLE `tse`.`doacoes`
 
 -- remove o que foi abstraído
 ALTER TABLE `tse`.`doacoes`
-DROP COLUMN `data`;
+  DROP COLUMN `data`;
   DROP COLUMN `cpf_candidato`,
   DROP COLUMN `doador`,
   DROP COLUMN `cpf`,
