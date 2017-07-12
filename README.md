@@ -11,7 +11,7 @@ Esse projeto **corrige, integra, estrutura e otimiza as receitas brutas** da *Pr
 
 ### Por quê?
 
-Planilhas são inviáveis para relacionar informação nessa escala. Em 2004 foi necessário analisar os caóticos dados providos pelo TSE na pesquisa e apuração de **Jornalismo Investigativo** que resultou na matéria [As quatro irmãs](http://apublica.org/2014/06/as-quatro-irmas/);
+Planilhas são inviáveis para relacionar informação nessa escala. Em 2014 foi necessário analisar os caóticos dados providos pelo TSE na pesquisa e apuração de **Jornalismo Investigativo** que resultou na matéria [As quatro irmãs](http://apublica.org/2014/06/as-quatro-irmas/);
 > Negócios familiares, proximidade com governos, financiamento de campanhas e diversificação de atividades – da telefonia ao setor armamentício – compõem a história das gigantes Odebrecht, OAS, Camargo Corrêa e Andrade Gutierrez.
 
 Porém, muitos *"furos"* e **indícios de corrupção e atos ilícitos** ainda podem ser evidenciados cruzando esses dados entre *Doadores, Candidatos e Partidos*, revelando - a princípio - os financiamentos e influências no Poder Público dos últimos 15 anos. Fatos ainda inexplorados e ocultos na *Política Brasileira* agora se tornam *acessíveis e apuráveis*.

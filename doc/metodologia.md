@@ -247,14 +247,14 @@ update doadores d,
 - Corrige algumas datas automaticamente
 
 ```sql
-  ALTER TABLE `tse`.`doacoes`
-    ADD COLUMN `quando` DATE NULL AFTER `data`;
-  update doacoes set data = replace('0002, 2002')    
-  update doacoes set quando = STR_TO_DATE(`data`, '%d/%m/%Y') where length(data)>7 and ano < 2016;
-  update doacoes set quando = STR_TO_DATE(`data`, '%d/%m/%Y') where data like("%/2016");
-  update doacoes set quando = str_to_date(data, '%d-%b-%y') where ano=2016 and quando is null;
-  ALTER TABLE `tse`.`doacoes`
-    DROP COLUMN `data`;    
+ALTER TABLE `tse`.`doacoes`
+  ADD COLUMN `quando` DATE NULL AFTER `data`;
+
+update doacoes set quando = STR_TO_DATE(`data`, '%d/%m/%Y')
+    WHERE quando is null AND data REGEXP '^[0-9]{1,2}/\[0-9]{2}/\[0-9]{4}$';
+
+update doacoes set quando = str_to_date(data, '%d-%b-%y')
+  WHERE quando is null AND data REGEXP '^[0-9]{1,2}-.{3}-[0-9]{2,4}$';
 ```
 
 - Otimiza tabelas após tamanhas mudanças estruturais
