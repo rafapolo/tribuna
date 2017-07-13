@@ -10,7 +10,7 @@ update doacoes set quando = str_to_date(data, '%d-%b-%y') where quando is null A
 -- SELECT data, count(*) FROM doacoes WHERE data is not null and data!='' and quando is ull group by data;
 -- SELECT ano, count(*) FROM doacoes WHERE data is not null and data!='' and quando is null group by ano;
 
-abstrai Candidatos
+-- abstrai Candidatos
 drop table if exists candidatos;
 CREATE TABLE candidatos
   select partido, uf, ano, nome, cargo, numero, cpf_candidato
@@ -25,9 +25,9 @@ ALTER TABLE `tse`.`candidatos`
 -- abstrai Doadores
 drop table if exists doadores;
 create table doadores
-select doador, cpf
-  from doacoes
-    group by doador, cpf;
+  select doador, cpf
+    from doacoes
+      group by doador, cpf;
 
 ALTER TABLE `tse`.`doadores`
   ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST,
@@ -37,8 +37,8 @@ ALTER TABLE `tse`.`doadores`
 drop table if exists comites;
 create table comites
   SELECT nome, partido, uf
-  FROM doacoes where tipo != 'candidato'
-    group by nome, partido, uf;
+    FROM doacoes where tipo != 'candidato'
+      group by nome, partido, uf;
 
 ALTER TABLE `tse`.`comites`
   ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST,
@@ -61,17 +61,18 @@ CREATE INDEX index_candidato ON doacoes ( nome, cpf_candidato, numero, partido, 
 
 update doacoes d, doadores dd
   set d.doador_id = dd.id
-    where dd.doador = d.doador and d.cpf=dd.cpf;
+    where d.doador_id is null and dd.doador = d.doador and d.cpf=dd.cpf;
 
 update doacoes d, candidatos c
   set d.candidato_id = c.id
-    where c.nome = d.nome and c.cpf_candidato=d.cpf_candidato
+    where d.candidato_id and c.nome = d.nome and c.cpf_candidato=d.cpf_candidato
       and c.numero=d.numero and c.partido=d.partido
         and c.ano=d.ano and c.cargo=d.cargo;
 
 update doacoes d, comites c
   set d.comite_id = c.id
-    where d.partido = c.partido and d.nome=c.nome and c.uf=d.uf;
+    where d.comite_id is null and d.partido = c.partido
+      and d.nome=c.nome and c.uf=d.uf;
 
 -- otimiza
 ALTER TABLE `tse`.`doacoes`
