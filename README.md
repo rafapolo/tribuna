@@ -2,9 +2,13 @@
 
 [![auto-de-fe](doc/francisco_rizi-auto_de_fe.jpg)](https://upload.wikimedia.org/wikipedia/commons/2/28/Francisco_rizi-auto_de_fe.jpg)
 
+<p align="center">
+  (experimental: ainda em fase de validação dos dados finais)
+</p>
 
 ----
 ### O que é?
+
 Esse projeto **corrige, integra, estrutura e otimiza as receitas brutas** da *Prestação de Contas do Tribunal Superior Eleitoral*, disponível no [Repositório de Dados Eleitorais](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais/), num Banco de Dados Relacional preparado para inquéritos, além de propor ferramentas abertas que facilitem sua relevante investigação por jornalistas, hackers e ativistas.
 
 ----
