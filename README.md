@@ -2,8 +2,9 @@
 
 [![auto-de-fe](doc/francisco_rizi-auto_de_fe.jpg)](https://upload.wikimedia.org/wikipedia/commons/2/28/Francisco_rizi-auto_de_fe.jpg)
 
+----
 <p align="center">
-  (experimental: ainda em fase de validação dos dados finais)
+  (fase experimental: validando dados inconsistentes)
 </p>
 
 ----
