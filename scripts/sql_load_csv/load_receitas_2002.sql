@@ -11,10 +11,10 @@ load data local infile 'fontes_tse/2002/prestacao_contas_2002/2002/Candidato/Rec
 SET
   ano="2002", tipo="candidato",
   uf =      TRIM(@uf),
-  nome =    TRIM(@nome),
+  candidato =    TRIM(@nome),
   cargo =   TRIM(@cargo),
   numero =  TRIM(@numero),
-  cpf =     TRIM(@cpf_doador),
+  cpf_doador =  TRIM(@cpf_doador),
   doador =  TRIM(@doador),
   partido = TRIM(@partido),
   recurso = TRIM(@tipo),
@@ -32,8 +32,8 @@ load data local infile 'fontes_tse/2002/prestacao_contas_2002/2002/Comitê/Recei
 SET
   ano="2002", tipo="comite",
   uf =      TRIM(@uf),
-  nome =    TRIM(@nome),
-  cpf =     TRIM(@cpf_doador),
+  candidato =    TRIM(@nome),
+  cpf_doador =     TRIM(@cpf_doador),
   doador =  TRIM(@doador),
   partido = TRIM(@partido),
   recurso = TRIM(@tipo),

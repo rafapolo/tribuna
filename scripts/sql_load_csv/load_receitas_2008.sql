@@ -14,10 +14,10 @@ load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Candidato/Rec
   SET
     ano="2008", tipo="candidato",
     uf = TRIM(@uf),
-    nome=TRIM(@nome),
+    candidato=TRIM(@nome),
     cargo=TRIM(@cargo),
     numero=TRIM(@numero),
-    cpf=TRIM(@cpf),
+    cpf_doador=TRIM(@cpf),
     cpf_candidato=TRIM(@cpf_candidato),
     doador=TRIM(@doador),
     partido=TRIM(@partido),
@@ -41,8 +41,8 @@ load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Comitê/Recei
   SET
     ano="2008", tipo="comite",
     uf = TRIM(@uf),
-    nome=TRIM(@tipodiretorio),
-    cpf=TRIM(@cpforig),
+    candidato=TRIM(@tipodiretorio),
+    cpf_doador=TRIM(@cpforig),
     doador=TRIM(@doador),
     partido=TRIM(@partido),
     numero=TRIM(@numero),

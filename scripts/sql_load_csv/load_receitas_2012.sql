@@ -13,7 +13,7 @@ load data local infile 'fontes_tse/2012/receitas_candidatos_2012_brasil.txt'
   SET
     ano="2012", tipo="candidato",
     uf = TRIM(@uf),
-    nome=TRIM(@nome),
+    candidato=TRIM(@nome),
     cargo=TRIM(@cargo),
     numero=TRIM(@numero),
     cpf=TRIM(@cpf),
@@ -39,14 +39,14 @@ load data local infile 'fontes_tse/2012/receitas_comites_2012_brasil.txt'
   SET
     ano="2012", tipo="comite",
     uf = TRIM(@uf),
-    nome=TRIM(@tipodiretorio),
-    cpf=TRIM(@cpforig),
+    candidato=TRIM(@tipodiretorio),
+    cpf_doador=TRIM(@cpforig),
     doador=TRIM(@doador), partido=TRIM(@partido),
     numero=TRIM(@numero),
-    cpf=TRIM(@cpf),
     recurso = TRIM(@tipo),
     motivo = TRIM(@motivo),
     data=left(TRIM(@data) , 10),
+    setor_economico = TRIM(@setec)
     valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
   SHOW WARNINGS;
 
@@ -63,13 +63,14 @@ load data local infile 'fontes_tse/2012/receitas_partidos_2012_brasil.txt'
   SET
     ano="2012", tipo="partido",
     uf = TRIM(@uf),
-    nome=TRIM(@tipodiretorio),
+    candidato=TRIM(@tipodiretorio),
     cpf=TRIM(@cpforig),
     doador=TRIM(@doador), partido=TRIM(@partido),
     numero=TRIM(@numero),
-    cpf=TRIM(@cpf),
+    cpf_doador=TRIM(@cpf),
     recurso = TRIM(@especie),
     motivo = TRIM(@motivo),
     data=left(TRIM(@data) , 10),
+    setor_economico = TRIM(@setec)        
     valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
   SHOW WARNINGS;
