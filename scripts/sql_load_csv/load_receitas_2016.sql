@@ -24,7 +24,7 @@ SET
   recurso = TRIM(@especie),
   motivo = TRIM(@descrec),
   data=left(TRIM(@data) , 10),
-  setor_economico = TRIM(@setorigi)
+  setor_economico = TRIM(@setorigi),
   valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
 
 -- load partidos
@@ -52,5 +52,5 @@ load data local infile 'fontes_tse/2016/receitas_partidos_prestacao_contas_final
     recurso = TRIM(@especie),
     motivo = TRIM(@descrec),
     data=left(TRIM(@data) , 10),
-    setor_economico = TRIM(@setorigi)    
+    setor_economico = TRIM(@setorigi),
     valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));

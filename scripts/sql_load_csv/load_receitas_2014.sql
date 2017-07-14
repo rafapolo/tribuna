@@ -54,7 +54,7 @@ load data local infile 'fontes_tse/2014/receitas_comites_2014_brasil.txt'
     recurso = TRIM(@especie),
     motivo = TRIM(@descrec),
     data=left(TRIM(@data) , 10),
-    setor_economico = TRIM(@setorigi)
+    setor_economico = TRIM(@setorigi),
     valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
   SHOW WARNINGS;
 
@@ -84,6 +84,6 @@ load data local infile 'fontes_tse/2014/receitas_partidos_2014_brasil.txt'
     recurso = TRIM(@especie),
     motivo = TRIM(@descrec),
     data=left(TRIM(@data) , 10),
-    setor_economico = TRIM(@setorigi)
+    setor_economico = TRIM(@setorigi),
     valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
   SHOW WARNINGS;

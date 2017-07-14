@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS tse;
-CREATE DATABASE tse;
+CREATE DATABASE IF NOT EXISTS tse;
 USE tse;
+DROP TABLE IF EXISTS doacoes;
 
-CREATE TABLE `doacoes` (
+CREATE TABLE `tse`.`doacoes` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `uf` varchar(2) NOT NULL,
   `partido` varchar(8) DEFAULT NULL,
