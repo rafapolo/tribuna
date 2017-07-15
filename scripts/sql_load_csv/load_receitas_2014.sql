@@ -14,7 +14,7 @@ load data local infile 'fontes_tse/2014/receitas_candidatos_2014_brasil.txt'
 SET
   ano="2014", tipo="candidato",
   uf =      TRIM(@uf),
-  nome=     TRIM(@nome),
+  candidato=     TRIM(@nome),
   cargo=    TRIM(@cargo),
   numero=   TRIM(@numero),
   cpf_doador=      TRIM(@cpf),
