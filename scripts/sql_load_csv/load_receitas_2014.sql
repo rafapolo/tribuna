@@ -24,7 +24,7 @@ SET
   recurso = TRIM(@especie),
   motivo =  TRIM(@descrec),
   data=left(TRIM(@dt) , 10),
-  setor_economico = TRIM(@setorigi)
+  setor_economico = TRIM(@setorigi),
   valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
 SHOW WARNINGS;
 

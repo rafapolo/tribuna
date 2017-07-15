@@ -42,7 +42,7 @@ load data local infile 'fontes_tse/2006/prestacao_contas_2006/2006/Comitê/Recei
     partido=TRIM(@partido),
     numero=TRIM(@numero),
     cpf_candidato=TRIM(@cpf),
-    cpf=TRIM(@cpf_doador),
+    cpf_doador=TRIM(@cpf_doador),
     recurso = TRIM(@recurso),
     motivo = TRIM(@motivo),
     data=left(TRIM(@data) , 10),

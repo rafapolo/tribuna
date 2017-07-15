@@ -30,13 +30,16 @@ CREATE TABLE `doacoes` (
   `uf` varchar(2) NOT NULL,
   `partido` varchar(8) DEFAULT NULL,
   `cargo` varchar(255) DEFAULT NULL,
-  `nome` varchar(255) DEFAULT NULL,
+  `candidato` varchar(255) DEFAULT NULL,
   `numero` int(15) DEFAULT NULL,
   `ano` int(4) DEFAULT NULL,
-  `cpf_candidato` varchar(20) DEFAULT NULL,  
+  `cpf_candidato` varchar(20) DEFAULT NULL,
+  `doador_original` varchar(255) DEFAULT NULL,
   `doador` varchar(255) DEFAULT NULL,
-  `cpf` varchar(20) DEFAULT NULL,  
+  `cpf_doador` varchar(20) DEFAULT NULL,
+  `cpf_doador_original` varchar(20) DEFAULT NULL,
   `recurso` varchar(255) DEFAULT NULL,
+  `setor_economico` varchar(255) DEFAULT NULL,
   `data` varchar(20) DEFAULT NULL,
   `motivo` varchar(255) DEFAULT NULL,
   `valor` double(12,2) DEFAULT NULL,
@@ -61,7 +64,13 @@ load data local infile './fontes_tse/2016/receitas_candidatos_prestacao_contas_f
           @descrec, @cpforiginario, @nomedoador, @tipodoro, @setorigi, @nomeorig)
 SET
   ano="2016", tipo="candidato",
-  uf = @uf, nome=@nome, cargo=@cargo, numero=@numero, cpf=@cpf, cpf_vice=@cpfvice, cpf_candidato=@cpfcandidato,
+  uf = @uf,
+  nome=@nome,
+  cargo=@cargo,
+  numero=@numero,
+  cpf_doador=@cpf,
+  cpf_vice=@cpfvice,
+  cpf_candidato=@cpfcandidato,
   doador=@doador, partido=@partido,
   recurso = @tipo,
   motivo = @descrec,
@@ -84,11 +93,15 @@ load data local infile './fontes_tse/2016/receitas_partidos_prestacao_contas_fin
         @seteco, @data, @valor, @tipo, @fonte, @especie,
           @descrec, @cpforig, @nomedoador, @tipodoro, @setorigi, @nomeorig)
   SET
-    ano="2016", tipo="partido",
-  uf = @uf, nome=@tipodiretorio, cpf=@cpforig,
-  doador=@doador, partido=@partido,
-  numero=@numero,
-    cpf_candidato=@cpf,
+  ano="2016", tipo="partido",
+  uf = @uf,
+  nome = @tipodiretorio,
+  cpf_doador = @cpf,
+  cpf_doador_original = @cpforig,
+  doador = @doador,
+  partido = @partido,
+  numero = @numero,
+  cpf_candidato = @cpf,
   recurso = @tipo,
   motivo = @descrec,
   data=left(@data , 10),
@@ -115,9 +128,9 @@ ALTER TABLE `tse`.`candidatos`
 
 ```sql
 create table doadores
-  select doador, uf, cpf
+  select doador, uf, cpf_doador
     from doacoes
-      group by doador, uf, cpf;
+      group by doador, uf, cpf_doador;
 
 
 ALTER TABLE `tse`.`doadores`
@@ -140,8 +153,8 @@ ALTER TABLE `tse`.`comites`
 
 Otimizar tabela geral *doacoes* para apontar para as novas tabelas de *doadores, candidatos e comites* extraídas.
 ```sql
-CREATE INDEX index_doador ON doadores ( doador, uf, cpf );
-CREATE INDEX index_doador ON doacoes ( doador, uf, cpf );
+CREATE INDEX index_doador ON doadores ( doador, uf, cpf_doador );
+CREATE INDEX index_doador ON doacoes ( doador, uf, cpf_doador );
 
 ALTER TABLE `tse`.`doacoes`
   ADD COLUMN `candidato_id` INT(7) NULL AFTER `id`,
@@ -158,7 +171,7 @@ CREATE INDEX index_candidato ON doacoes ( nome, cpf_candidato, numero, partido, 
 # atribui doadores
 update doacoes d, doadores dd
   set d.doador_id = dd.id
-    where dd.doador = d.doador and d.uf=dd.uf and d.cpf=dd.cpf;
+    where dd.doador = d.doador and d.uf=dd.uf and d.cpf_doador=dd.cpf_doador;
 # Query OK, 3696309 rows affected (44 min 46.83 sec)
 
 # atribui candidatos
@@ -196,7 +209,7 @@ ALTER TABLE `tse`.`doacoes`
   DROP COLUMN `cpf_candidato`,
   DROP COLUMN `cpf_vice`,
   DROP COLUMN `doador`,
-  DROP COLUMN `cpf`,
+  DROP COLUMN `cpf_doador`,
   DROP COLUMN `numero`,
   DROP COLUMN `nome`,
   DROP COLUMN `cargo`,
@@ -218,7 +231,7 @@ update comites c,
     where d.comite_id = c.id;
 
 ALTER TABLE `tse`.`doadores`
-ADD COLUMN `valor_total` DOUBLE(12,2) NULL AFTER `cpf`;
+ADD COLUMN `valor_total` DOUBLE(12,2) NULL;
 
 update doadores dd,
   (select doador_id, sum(valor) as soma from doacoes group by doador_id) as d
