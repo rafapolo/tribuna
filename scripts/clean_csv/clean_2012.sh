@@ -1,7 +1,10 @@
 #!/bin/bash
 # clean 2012 TSE csv
 
-find 2012 \( -name '*.csv' -o -name "*.CSV" -o -name "*.txt" -o -name "*.TXT" \) -print0 | xargs -0 \
- sed -e 's/\"\ /\"/g; s/\ \"/\"/g; s/\ +/\ /g; s/\"//g; s/#NULO#//g; s/#NULO//g' -i  --;
+DIR=`dirname $0`
+ano=2012
+
+find $ano -regex '.*\.\(csv\|CSV\|txt\|TXT\)$' -print0 \
+	| xargs -0 sed -f $DIR/general_clean.sed -f $DIR/clean_2012.sed -i --
 
 echo "=> ok!"
