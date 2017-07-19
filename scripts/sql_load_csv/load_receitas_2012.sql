@@ -3,7 +3,7 @@ use tse
 #"47";"Elei��o Municipal 2012";"28/09/201619:37:29";"130000025650";"MG";"42994";"CASCALHO RICO";"PSL";"17";"Prefeito";"D�RIO BORGES DE REZENDE";"76629325672";"0001742994MG000003";"";"71319581668";"BRAZ HUMBERTO GALDINI";"BRAZ HUMERTO GALDINO";"#NULO#";"#NULO#";"#NULO#";"";"";"28/07/201200:00:00";"500";"Recursos de pessoas f�sicas";"Nao especificado";"Estimado";"CESS�O DE CAMINH�O DE SOM PLACA KBO-3275� PARA FINS DE CAMPANHA ELEITRAL DO CANDIDATO - ELEI��ES 2012."
 
 -- load candidatos
-load data local infile 'fontes_tse/2012/receitas_candidatos_2012_brasil.txt'
+load data local infile 'fontes_tse/2012/prestacao_final_2012/receitas_candidatos_2012_brasil.txt'
   into table doacoes
     fields terminated by ';'
     lines terminated by '\n'
@@ -32,7 +32,7 @@ load data local infile 'fontes_tse/2012/receitas_candidatos_2012_brasil.txt'
 # "C�d. Elei��o";"Desc. Elei��o";"Data e hora";"Sequencial Comite";"UF";"N�mero UE";"Munic�pio";"Tipo comite";"Sigla  Partido";"Tipo do documento";"N�mero do documento";"CPF/CNPJ do doador";"Nome do doador";"Nome do doador (Receita Federal)";"Setor econ�mico do doador";"Data da receita";"Valor receita";"Tipo receita";"Fonte recurso";"Esp�cie recurso";"Descri��o da receita"
 
 -- load comites
-load data local infile 'fontes_tse/2012/receitas_comites_2012_brasil.txt'
+load data local infile 'fontes_tse/2012/prestacao_final_2012/receitas_comites_2012_brasil.txt'
   into table doacoes
     fields terminated by ';'
     lines terminated by '\n'
@@ -60,7 +60,7 @@ load data local infile 'fontes_tse/2012/receitas_comites_2012_brasil.txt'
 
 
 -- load partidos
-load data local infile 'fontes_tse/2012/receitas_partidos_2012_brasil.txt'
+load data local infile 'fontes_tse/2012/prestacao_final_2012/receitas_partidos_2012_brasil.txt'
   into table doacoes
     fields terminated by ';'
     lines terminated by '\n'
