@@ -5,7 +5,7 @@ use tse
 -- load candidatos
 load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Candidato/Receita/ReceitaCandidato.csv'
   into table doacoes
-    fields terminated by ';'
+    fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
     lines terminated by '\n'
     ignore 1 lines
 
@@ -14,8 +14,9 @@ load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Candidato/Rec
         @tipo, @cd_tp, @doador, @cpf, @uf_d, @n_uf, @adm, @sit, @nm_adm, @cpf_adm)
 
   SET
-    ano="2008", tipo="candidato",
-    uf = TRIM(@uf),
+    ano="2008",
+    tipo="candidato",
+    uf=TRIM(@uf),
     candidato=TRIM(@nome),
     cargo=TRIM(@cargo),
     numero=TRIM(@numero),
@@ -23,10 +24,10 @@ load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Candidato/Rec
     cpf_candidato=TRIM(@cpf_candidato),
     doador=TRIM(@doador),
     partido=TRIM(@partido),
-    recurso = TRIM(@tipo),
+    recurso=TRIM(@tipo),
     motivo=TRIM(@motivo),
-    data=left(TRIM(@data) , 10),
-    valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
+    data=LEFT(TRIM(@data), 10),
+    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.'));
   SHOW WARNINGS;
 
 # DS_ORGAO";"NR_PARTIDO";"SG_PARTIDO";"SG_UE_SUPERIOR";"NM_UE";"SG_UE";"NR_CNPJ";"VR_RECEITA";"DT_RECEITA";"RTRIM(LTRIM(DR.DS_TITULO))";"CD_TITULO";"DS_ESP_RECURSO";"CD_ESP_RECURSO";"NM_DOADOR";"CD_CPF_CNPJ_DOADOR";"SG_UE_SUPERIOR_1";"NM_UE_1";"SG_UE_1";"SITUACAOCADASTRAL";"NM_MEMBRO";"NR_CPF
@@ -35,7 +36,7 @@ load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Candidato/Rec
 -- load comites
 load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Comitê/Receita/ReceitaComitê.CSV'
   into table doacoes
-    fields terminated by ';'
+    fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
     lines terminated by '\n'
     ignore 1 lines
 
@@ -43,16 +44,17 @@ load data local infile 'fontes_tse/2008/prestacao_contas_2008/2008/Comitê/Recei
       @titulo, @tipo, @tp_recurso, @doador, @cpf_doador, @no, @sit, @c3, @c4, @c5, @c6)
 
   SET
-    ano="2008", tipo="comite",
-    uf = TRIM(@uf),
+    ano="2008",
+    tipo="comite",
+    uf=TRIM(@uf),
     candidato=TRIM(@tipodiretorio),
     doador=TRIM(@doador),
     partido=TRIM(@partido),
     numero=TRIM(@numero),
     cpf_candidato=TRIM(@cnpj),
     cpf_doador=TRIM(@cpf_doador),
-    recurso = TRIM(@tipo),
-    motivo = TRIM(@motivo),
-    data=left(TRIM(@data) , 10),
-    valor=cast(replace(TRIM(@valor), ',', '.') AS decimal( 9, 2 ));
+    recurso=TRIM(@tipo),
+    motivo=TRIM(@motivo),
+    data=LEFT(TRIM(@data), 10),
+    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.'));
   SHOW WARNINGS;
