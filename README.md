@@ -2,10 +2,6 @@
 
 [![auto-de-fe](doc/francisco_rizi-auto_de_fe.jpg)](https://upload.wikimedia.org/wikipedia/commons/2/28/Francisco_rizi-auto_de_fe.jpg)
 
-----
-<p align="center">
-  (fase experimental: validando dados inconsistentes)
-</p>
 
 ----
 ### O que é?
@@ -21,7 +17,7 @@ Planilhas são inviáveis para relacionar informação nessa escala. Em 2014 foi
 
 Porém, muitos *"furos"* e **indícios de corrupção e atos ilícitos** ainda podem ser evidenciados cruzando esses dados entre *Doadores, Candidatos e Partidos*, revelando - a princípio - os financiamentos e influências no Poder Público dos últimos 15 anos. Fatos ainda inexplorados e ocultos na *Política Brasileira* agora se tornam *acessíveis e apuráveis*.
 
-Se um *Tribunal Eleitoral* é o lugar onde se administra justiça, garantindo a legitimidade e transparência do processo eleitoral, **o TSE peca** - o faz de forma obscura e grotesca. Voltemos a *Tribuna*, local elevado para espetáculos e debates públicos.
+Em 2017, o projeto Tribuna foi base para a investigação sobre financiamento de campanha da Odebrecht, que resultou em uma série de matérias publicadas no [The Intercept Brasil](https://theintercept.com/2017/09/26/mapeamento-inedito-mostra-que-doacoes-legais-da-odebrecht-beneficiaram-1-087-candidatos-desde-2002/).
 
 ---
 
