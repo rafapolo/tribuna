@@ -23,8 +23,7 @@ uncompress() {
 }
 
 clean() {
-	# limpa e corrige .CSVs cagados, se precisar
-	# remove nulos, espaços, semi-vírgulas e aspas extras inválidas
+	# Clean CSV files: remove null, spaces, semi-colon and non valid extra quotes
 	ano="$1"
 	sh ../scripts/clean_csv/clean_$ano.sh
 }
@@ -44,7 +43,7 @@ case $test_mysql in
   *alive*) echo "=> MySQL is Ok!";;
 esac
 
-# fontes do TSE / ~2.4GB zips > ~26.3GB unzipped
+# TSE source / ~2.4GB zips > ~26.3GB unzipped
 url="http://agencia.tse.jus.br/estatistica/sead/odsele/prestacao_contas"
 fontes_tse=(
   "$url/prestacao_contas_2002.zip"
@@ -76,10 +75,19 @@ for i in ${fontes_tse[*]}; do
 done
 cd ..
 
+# # Baixa dados pré-2002. Fonte: TSE, digitalizado por David Samuels e adaptado por Bruno Carazza
+# 	echo "=> Baixando dados anteriores a 2002"
+
+# wget -O pre2002.xlsx http://leisenumeros.com.br/wp-content/uploads/2016/06/bruno-carazza-dados-de-doac3a7c3b5es-eleitorais-de-1994-e-1998-por-david-samuels-ajustados-por-bruno-carazza.xlsx
+# echo "=> Convertendo dados pré-2002 para CSV"
+# xlsx2csv pre2002.xlsx > csv/pre2002.csv
+# echo "=> Excluindo arquivo XLS"
+# rm pre2002.xlsx
+
 # Import data from CSV into the database
 for sql in scripts/sql_load_csv/*.sql; do
 	echo "=> loading $sql..."
-	MYSQL_PWD=$DB_PASS mysql -u$DB_USER -h$DB_HOST < $sql
+	MYSQL_PWD=$DB_PASS mysql -vu$DB_USER -h$DB_HOST < $sql
 done
 
 # stats
