@@ -19,7 +19,9 @@ CREATE TABLE `tse`.`doacoes` (
   `setor_economico` varchar(255) DEFAULT NULL,
   `data` varchar(20) DEFAULT NULL,
   `motivo` varchar(255) DEFAULT NULL,
+  `fonte` varchar(255) DEFAULT NULL,
   `valor` double(12,2) DEFAULT NULL,
+  `valor_at` double(12,2) DEFAULT NULL,
   `tipo` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;

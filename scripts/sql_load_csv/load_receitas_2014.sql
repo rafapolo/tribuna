@@ -11,7 +11,7 @@ load data local infile 'fontes_tse/2014/prestacao_final_2014/receitas_candidatos
     (@cod, @descr, @data, @pretador, @seqcand, @uf, @partido,
       @numero, @cargo, @nome, @cpfcandidato, @recibo, @numdoc, @cpf,
         @doador, @nomdoadreceita, @uf_doador, @numpart, @numcandd, @codseeco,
-          @seteco, @dt, @valor, @tipo, @fonte, @especie,
+          @seteco, @dt, @valor, @fonte, @tipo, @especie,
             @descrec, @cpforiginario, @nomedoador, @tipodoro, @setorigi, @nomeorig)
 SET
   ano="2014",
@@ -27,6 +27,7 @@ SET
   doador=TRIM(@doador),
   partido=TRIM(@partido),
   recurso=TRIM(@especie),
+  fonte=TRIM(@fonte),
   motivo=TRIM(@descrec),
   data=LEFT(TRIM(@dt), 10),
   setor_economico=TRIM(@setorigi),
@@ -47,7 +48,7 @@ load data local infile 'fontes_tse/2014/prestacao_final_2014/receitas_comites_20
 
     (@cod, @desc, @data, @pretador, @seqcom, @uf, @tipodiretorio, @partido,
     @tipodoc, @nrdoc, @cpf, @doador, @nomdoadreceita, @uf_doador, @numero, @numcandd, @codseeco,
-        @seteco, @data, @valor, @tipo, @fonte, @especie,
+        @seteco, @data, @valor, @fonte, @tipo, @especie,
           @descrec, @cpforig, @nomedoador, @tipodoro, @setorigi, @nomeorig)
 
   SET
@@ -66,7 +67,8 @@ load data local infile 'fontes_tse/2014/prestacao_final_2014/receitas_comites_20
     motivo=TRIM(@descrec),
     data=LEFT(TRIM(@data), 10),
     setor_economico=TRIM(@setorigi),
-    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.'));
+    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.')),
+    fonte=TRIM(@fonte);
 SHOW WARNINGS;
 
 
@@ -102,5 +104,7 @@ load data local infile 'fontes_tse/2014/prestacao_final_2014/receitas_partidos_2
     motivo=TRIM(@descrec),
     data=LEFT(TRIM(@data), 10),
     setor_economico=TRIM(@setorigi),
-    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.'));
+    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.')),
+    fonte=TRIM(@fonte);
+
 SHOW WARNINGS;

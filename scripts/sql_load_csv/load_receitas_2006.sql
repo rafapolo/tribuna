@@ -10,7 +10,7 @@ load data local infile 'fontes_tse/2006/prestacao_contas_2006/2006/Candidato/Rec
     lines terminated by '\n'
     ignore 1 lines
     (@seq, @nome, @cargo, @cod_cargo, @numero, @uf, @cnpj_candidato,
-     @num_partido, @partido, @valor, @data, @motivo, @u_e, @recurso, @cod_tipo,
+     @num_partido, @partido, @valor, @data, @fonte, @u_e, @recurso, @cod_tipo,
      @doador, @cpf, @unidel, @sit)
 SET
   ano="2006",
@@ -24,7 +24,7 @@ SET
   doador=TRIM(@doador),
   partido=TRIM(@partido),
   recurso=TRIM(@recurso),
-  motivo= TRIM(@motivo),
+  fonte= TRIM(@fonte),
   data=LEFT(TRIM(@data), 10),
   valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.'));
 SHOW WARNINGS;
@@ -39,7 +39,7 @@ load data local infile 'fontes_tse/2006/prestacao_contas_2006/2006/Comitê/Recei
     lines terminated by '\n'
     ignore 1 lines
 
-    (@tipodiretorio, @numero, @partido, @uf, @cpf, @valor, @data, @motivo,
+    (@tipodiretorio, @numero, @partido, @uf, @cpf, @valor, @data, @fonte,
       @titulo, @recurso, @tp_recurso, @doador, @cpf_doador, @no, @sit)
 
   SET
@@ -53,7 +53,7 @@ load data local infile 'fontes_tse/2006/prestacao_contas_2006/2006/Comitê/Recei
     cpf_candidato=TRIM(@cpf),
     cpf_doador=TRIM(@cpf_doador),
     recurso=TRIM(@recurso),
-    motivo=TRIM(@motivo),
+    fonte=TRIM(@fonte),
     data=LEFT(TRIM(@data), 10),
     valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.'));
   SHOW WARNINGS;

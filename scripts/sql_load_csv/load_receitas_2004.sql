@@ -9,7 +9,7 @@ load data local infile 'fontes_tse/2004/prestacao_contas_2004/2004/Candidato/Rec
     lines terminated by '\n'
     ignore 1 lines
     (@nome, @cargo, @numero, @cod_uf, @uf, @nome_uf, @nr_part, @sg_part, @partido,
-     @valor, @data, @recurso, @tp_recurso, @especie, @tp_especie, @doador, @cpf_doador, @meaning)
+     @valor, @data, @fonte, @tp_recurso, @recurso, @tp_especie, @doador, @cpf_doador, @meaning)
 SET
   ano="2004",
   tipo="candidato",
@@ -20,8 +20,9 @@ SET
   cpf_doador=TRIM(@cpf_doador),
   doador=TRIM(@doador),
   partido=TRIM(@partido),
-  recurso=TRIM(@especie),
+  recurso=TRIM(@recurso),
   data=LEFT(TRIM(@data), 10),
+  fonte=TRIM(@fonte),
   valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.'));
 SHOW WARNINGS;
 

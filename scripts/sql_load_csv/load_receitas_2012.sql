@@ -29,7 +29,8 @@ load data local infile 'fontes_tse/2012/prestacao_final_2012/receitas_candidatos
     recurso=TRIM(@tipo),
     motivo=TRIM(@motivo),
     data=LEFT(TRIM(@data), 10),
-    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.'));
+    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.')),
+    fonte=TRIM(@fonte);
   SHOW WARNINGS;
 
 
@@ -59,7 +60,8 @@ load data local infile 'fontes_tse/2012/prestacao_final_2012/receitas_comites_20
     motivo=TRIM(@motivo),
     data=LEFT(TRIM(@data), 10),
     setor_economico=TRIM(@setec),
-    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.'));
+    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.')),
+    fonte=TRIM(@fonte);
   SHOW WARNINGS;
 
 
@@ -90,5 +92,6 @@ load data local infile 'fontes_tse/2012/prestacao_final_2012/receitas_partidos_2
     motivo=TRIM(@motivo),
     data=LEFT(TRIM(@data), 10),
     setor_economico=TRIM(@setec),
-    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.'));
+    valor=IF(TRIM(@valor) = '', NULL, REPLACE(TRIM(@valor), ',', '.')),
+    fonte=TRIM(@fonte);
   SHOW WARNINGS;

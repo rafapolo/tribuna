@@ -13,7 +13,7 @@ load data local infile 'fontes_tse/2016/prestacao_contas_final_2016/receitas_can
     (@cod, @descr, @data, @pretador, @seqcand, @uf, @suf, @mun, @partido,
     @numero, @cargo, @nome, @cpfcandidato, @cpfvice, @recibo, @numdoc, @cpf_doador,
       @doador, @nomdoadreceita, @uf_doador, @numpart, @numcandd, @codseeco,
-        @seteco, @data, @valor, @tipo, @fonte, @especie,
+        @seteco, @data, @valor, @fonte, @tipo, @especie,
           @descrec, @cpforig, @nomedoador, @tipodoro, @setorigi, @nomeorig)
 SET
   ano="2016",
@@ -28,6 +28,7 @@ SET
   doador=TRIM(@doador),
   doador_original=TRIM(@nomedoador),
   partido=TRIM(@partido),
+  fonte=TRIM(@fonte),
   recurso=TRIM(@especie),
   motivo=TRIM(@descrec),
   data=LEFT(TRIM(@data), 10),
@@ -49,7 +50,7 @@ load data local infile 'fontes_tse/2016/prestacao_contas_final_2016/receitas_par
 
     (@cod, @descr, @data, @pretador, @seqcom, @uf, @suf, @mun, @tipodiretorio, @partido,
       @nrrec, @nrdoc, @cpf, @doador, @nomdoadreceita, @uf_doador, @numero, @numcandd, @codseeco,
-        @seteco, @data, @valor, @motivo, @fonte, @especie, @descrec, @cpforig, @nomedoador,
+        @seteco, @data, @valor, @fonte, @motivo, @especie, @descrec, @cpforig, @nomedoador,
           @tipodoro, @setorigi, @nomeorig)
 
   SET
@@ -62,6 +63,7 @@ load data local infile 'fontes_tse/2016/prestacao_contas_final_2016/receitas_par
     cpf_doador_original=TRIM(@cpforig),
     doador_original=TRIM(@nomedoador),
     partido=TRIM(@partido),
+    fonte=TRIM(@fonte),
     numero=TRIM(@numero),
     cpf_candidato=TRIM(@cpf),
     recurso=TRIM(@especie),
