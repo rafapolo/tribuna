@@ -31,6 +31,7 @@ O script **auditável** proposto [ilumina.sh](ilumina.sh) pega as fontes oficiai
 ![modelo](doc/modelo.png)
 
 => Download do [dump](http://extrapolo.com/projeto/tse/tse2016.sql.tar.bz2) público final do database.
+=> [Dump em SQLite](https://drive.google.com/file/d/1lemID3QxyTEQOeJlxd1J74tuaBo4bwNv/view?usp=sharing)
 
 ---
 
