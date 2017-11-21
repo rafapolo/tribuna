@@ -95,5 +95,5 @@ gb=`du -sh | cut -f1`
 end=`date +%s`
 secs=$((end-start))
 ls -alho
-printf "=> $gb de dados | processado em %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
+printf "=> $gb de dados processados em %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
 echo "=> remova fontes_tse, se database Ok."
