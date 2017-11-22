@@ -1,6 +1,5 @@
 tmp/
 fontes_tse/
-*.env
+config.env
 *.csv
-*.sql
 *.tar.gz

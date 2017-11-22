@@ -8,7 +8,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -30,7 +30,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -52,7 +52,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -74,7 +74,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -96,7 +96,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -118,7 +118,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -140,7 +140,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -162,7 +162,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -184,7 +184,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -206,7 +206,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -228,7 +228,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -250,7 +250,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -272,7 +272,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -294,7 +294,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -316,7 +316,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -338,7 +338,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -360,7 +360,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -382,7 +382,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -404,7 +404,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -426,7 +426,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -448,7 +448,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -470,7 +470,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -492,7 +492,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -514,7 +514,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -536,7 +536,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -558,7 +558,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -580,7 +580,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
@@ -602,7 +602,7 @@ INTO TABLE doacoes
 fields terminated by ';' OPTIONALLY ENCLOSED BY '"'
 lines terminated BY '\n'
 IGNORE 1 lines
-(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @motivo, @recurso)
+(@data, @seq, @uf, @partido, @numero, @cargo, @nome, @cpf_candidato, @nao, @rec, @doc, @cpf, @doador, @data, @valor, @tipo, @fonte, @recurso, @motivo)
 SET ano="2010",
     tipo="candidato",
     uf=TRIM(@uf),
