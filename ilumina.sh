@@ -28,6 +28,20 @@ clean() {
 	sh ../scripts/clean_csv/clean_$ano.sh
 }
 
+utf8() {
+	# converte a codificação dos arquivos com extensões txt e csv para utf-8
+	ano="$1"
+	find "$ano" -regex ".*\.\(csv\|CSV\|txt\|TXT\)$" -print0 \
+		| xargs -0 -I % sh -c 'encoding=`file -b --mime-encoding "%"`; \
+		                       if \
+								   [ "$encoding" != "binary" ]; \
+							   then \
+							       mv "%" "%.bkp"; \
+							       iconv -f "$encoding" -t utf-8 "%.bkp" > "%"; \
+						           rm "%.bkp";  \
+							   fi'
+}
+
 start=`date +%s`
 
 # Check if all commands required to run this script are available
@@ -69,6 +83,9 @@ for i in ${fontes_tse[*]}; do
 
 	echo "=> descompactando $ano..."
 	uncompress "$file" "$ano"
+
+	echo "=> convertendo $ano para utf-8..."
+	utf8 "$ano"
 
 	echo "=> limpando $ano..."
 	clean "$ano"
