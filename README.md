@@ -4,6 +4,7 @@
 
 
 ----
+
 ### O que é?
 
 Esse projeto **corrige, integra, estrutura e otimiza as receitas brutas** da *Prestação de Contas do Tribunal Superior Eleitoral*, disponível no [Repositório de Dados Eleitorais](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais/), num Banco de Dados Relacional preparado para inquéritos, além de propor ferramentas abertas que facilitem sua relevante investigação por jornalistas, hackers e ativistas.
@@ -17,13 +18,15 @@ Planilhas são inviáveis para relacionar informação nessa escala. Em 2014 foi
 
 Porém, muitos *"furos"* e **indícios de corrupção e atos ilícitos** ainda podem ser evidenciados cruzando esses dados entre *Doadores, Candidatos e Partidos*, revelando - a princípio - os financiamentos e influências no Poder Público dos últimos 15 anos. Fatos ainda inexplorados e ocultos na *Política Brasileira* agora se tornam *acessíveis e apuráveis*.
 
-Em 2017, o projeto Tribuna foi base para a investigação sobre financiamento de campanha da Odebrecht, que resultou em uma série de matérias publicadas no [The Intercept Brasil](https://theintercept.com/2017/09/26/mapeamento-inedito-mostra-que-doacoes-legais-da-odebrecht-beneficiaram-1-087-candidatos-desde-2002/).
+Em 2017, o projeto Tribuna foi base para a investigação sobre financiamento de campanha da Odebrecht, que resultou em uma série de matérias publicadas no [The Intercept Brasil](https://theintercept.com/staff/adriano-belisario/) e em espanhol na [Connectas](https://www.connectas.org/especiales/odebrecht/). Durante o processo de apuração, o método de conversão dos dados do Tribuna foi otimizado	e os dados foram checados diversas vezes.
 
 ---
 
 ### Como?
 
 O script **auditável** proposto [ilumina.sh](ilumina.sh) pega as fontes oficiais e estrutura o banco de dados relacional num processo automático que pode levar mais de 8 horas de processamento de dados. Ver a [Metodologia](doc/metodologia.md).
+
+Para rodar o script, você precisa instalar o MYSQL e o UNAR.
 
 ---
 
